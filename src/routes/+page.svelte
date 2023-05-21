@@ -26,16 +26,16 @@
 <World>
 	{#if $viewState === 'intro'}
 		<IntroScene />
-	{:else if $viewState === 'end'}
-		<EndScene />
-	{:else if $viewState === 'scene'}
-		<TestScene />
 	{:else if $viewState === 'cards'}
 		<CardsScene />
+	{:else if $viewState === 'scene'}
+		<TestScene />
 	{:else if $viewState === 'results'}
 		<ResultsScene />
 	{:else if $viewState === 'customize'}
 		<CustomizeScene />
+	{:else if $viewState === 'end'}
+		<EndScene />
 	{/if}
 </World>
 
@@ -51,16 +51,16 @@
 	<main class="col-span-2 flex-grow justify-self-center self-center">
 		{#if $viewState === 'intro'}
 			<IntroContent />
-		{:else if $viewState === 'end'}
-			<EndContent />
-		{:else if $viewState === 'scene'}
-			<TestContent />
 		{:else if $viewState === 'cards'}
 			<CardsContent />
+		{:else if $viewState === 'scene'}
+			<TestContent />
 		{:else if $viewState === 'results'}
 			<ResultsContent />
 		{:else if $viewState === 'customize'}
 			<CustomizeContent />
+		{:else if $viewState === 'end'}
+			<EndContent />
 		{/if}
 	</main>
 

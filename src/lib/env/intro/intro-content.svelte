@@ -1,5 +1,5 @@
 <script>
-	import { viewTestState } from '$lib/changeState'
+	import { viewCardsState } from '$lib/changeState'
 	import { Lang } from '$lib/lang'
 </script>
 
@@ -8,7 +8,7 @@
 <p class="text-center">{Lang.subtitle}</p>
 
 <button
-	on:click={viewTestState}
+	on:click={viewCardsState}
 	class="absolute mx-auto bottom-3 border rounded-full px-8 py-2 text-white border-white transition-colors hover:bg-white hover:text-black"
 	type="button">{Lang.startButton}</button
 >

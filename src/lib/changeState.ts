@@ -8,7 +8,15 @@ export const viewIntroState = () => {
     roadmapData.set(null)
 }
 
-export const viewTestState = () => {
+export const viewCardsState = () => {
+    viewState.set('cards')
+    showNav.set(true)
+    description.set('')
+    indicators.set([])
+    roadmapData.set(null)
+}
+
+export const viewSceneState = () => {
     viewState.set('scene')
     showNav.set(true)
     description.set('Test description')
@@ -34,4 +42,28 @@ export const viewTestState = () => {
             '미래 - 절제',
         ],
     })
+}
+
+export const viewResultsState = () => {
+    viewState.set('results')
+    showNav.set(true)
+    description.set('')
+    indicators.set([])
+    roadmapData.set(null)
+}
+
+export const viewCustomizeState = () => {
+    viewState.set('customize')
+    showNav.set(true)
+    description.set('')
+    indicators.set([])
+    roadmapData.set(null)
+}
+
+export const viewEndState = () => {
+    viewState.set('end')
+    showNav.set(true)
+    description.set('')
+    indicators.set([])
+    roadmapData.set(null)
 }
