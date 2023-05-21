@@ -48,7 +48,7 @@
 		<Roadmap />
 	</section>
 
-	<main class="col-span-2 flex-grow justify-self-center self-center">
+	<main class="col-span-2 justify-self-center self-center">
 		{#if $viewState === 'intro'}
 			<IntroContent />
 		{:else if $viewState === 'cards'}
