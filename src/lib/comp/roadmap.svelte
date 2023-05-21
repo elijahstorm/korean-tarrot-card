@@ -1,6 +1,10 @@
+<script>
+	import { roadmapData } from '$lib/state'
+</script>
+
 <div class="grid grid-cols-1 grid-rows-1 text-black">
 	<section class="flex row-start-1 col-start-1 gap-2">
-		<div>연에운</div>
+		<div>{$roadmapData.title}</div>
 
 		<div class="relative w-2 pt-2 h-[calc(100%-1rem)]">
 			<div class="absolute h-full flex flex-col justify-between">
@@ -13,11 +17,11 @@
 		</div>
 
 		<div class="flex flex-col gap-6 text-sm py-0.5">
-			<div>과거 - 운돌자</div>
+			<div>{$roadmapData.points[0]}</div>
 
-			<div>현재 - 정의</div>
+			<div>{$roadmapData.points[1]}</div>
 
-			<div>미래 - 절제</div>
+			<div>{$roadmapData.points[2]}</div>
 		</div>
 	</section>
 

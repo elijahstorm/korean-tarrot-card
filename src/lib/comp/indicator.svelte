@@ -1,6 +1,6 @@
 <script lang="ts">
-	export let left = '50'
-	export let top = '50'
+	export let left = 50
+	export let top = 50
 
 	$: style = `left: ${left}%; top: ${top}%;`
 </script>
