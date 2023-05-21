@@ -1,48 +1,32 @@
 <script>
-	import { Canvas, InteractiveObject, OrbitControls, T } from '@threlte/core'
-	import { spring } from 'svelte/motion'
-	import { degToRad } from 'three/src/math/MathUtils'
-
-	const scale = spring(1)
+	import ClickIndicator from '$lib/comp/click-indicator.svelte'
+	import Description from '$lib/comp/description.svelte'
+	import Nav from '$lib/comp/nav.svelte'
+	import Roadmap from '$lib/comp/roadmap.svelte'
+	import TestScene from '$lib/env/test/test-scene.svelte'
+	import World from '$lib/env/world.svelte'
 </script>
 
-<div>
-	<Canvas>
-		<T.PerspectiveCamera makeDefault position={[10, 10, 10]} fov={24}>
-			<OrbitControls maxPolarAngle={degToRad(80)} enableZoom={false} target={{ y: 0.5 }} />
-		</T.PerspectiveCamera>
+<World>
+	<TestScene />
+</World>
 
-		<T.DirectionalLight castShadow position={[3, 10, 10]} />
-		<T.DirectionalLight position={[-3, 10, -10]} intensity={0.2} />
-		<T.AmbientLight intensity={0.2} />
+<section class="my-8 mx-4 sm:mx-8 grid grid-cols-2 grid-rows-2 absolute inset-0">
+	<div class="justify-self-start">
+		<Nav />
+	</div>
 
-		<!-- Cube -->
-		<T.Group scale={$scale}>
-			<T.Mesh position.y={0.5} castShadow let:ref>
-				<!-- Add interaction -->
-				<InteractiveObject
-					object={ref}
-					interactive
-					on:pointerenter={() => ($scale = 2)}
-					on:pointerleave={() => ($scale = 1)}
-				/>
+	<div class="justify-self-end">
+		<Roadmap />
+	</div>
 
-				<T.BoxGeometry />
-				<T.MeshStandardMaterial color="#333333" />
-			</T.Mesh>
-		</T.Group>
+	<div class="col-span-2 justify-self-center self-end">
+		<Description />
+	</div>
+</section>
 
-		<!-- Floor -->
-		<T.Mesh receiveShadow rotation.x={degToRad(-90)}>
-			<T.CircleGeometry args={[3, 72]} />
-			<T.MeshStandardMaterial color="white" />
-		</T.Mesh>
-	</Canvas>
-</div>
-
-<style>
-	div {
-		height: 100%;
-		width: 100%;
-	}
-</style>
+<section class="absolute inset-0">
+	<ClickIndicator left="40" top="50" />
+	<ClickIndicator left="50" top="20" />
+	<ClickIndicator left="30" top="60" />
+</section>
