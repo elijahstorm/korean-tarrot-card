@@ -6,7 +6,7 @@
 </script>
 
 <div
-	class="absolute w-min aspect-1 rounded-full overflow-clip p-6 opacity-40 bg-black text-white cursor-pointer hover:opacity-80 transition-opacity select-none"
+	class="pointer-events-auto absolute w-min aspect-1 rounded-full overflow-clip p-6 opacity-40 bg-black text-white cursor-pointer hover:opacity-80 transition-opacity select-none"
 	{style}
 >
 	click

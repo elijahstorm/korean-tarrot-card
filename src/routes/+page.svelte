@@ -3,46 +3,72 @@
 	import Description from '$lib/comp/description.svelte'
 	import Nav from '$lib/comp/nav.svelte'
 	import Roadmap from '$lib/comp/roadmap.svelte'
-	import Intro from '$lib/env/intro/intro.svelte'
-	import Results from '$lib/env/results/results.svelte'
-	import End from '$lib/env/end/end.svelte'
-	import Cards from '$lib/env/cards/cards.svelte'
-	import Customize from '$lib/env/customize/customize.svelte'
+	import IntroScene from '$lib/env/intro/intro-scene.svelte'
+	import EndScene from '$lib/env/end/end-scene.svelte'
 	import TestScene from '$lib/env/test/test-scene.svelte'
 	import World from '$lib/env/world.svelte'
 	import { viewState } from '$lib/state'
+	import CardsScene from '$lib/env/cards/cards-scene.svelte'
+	import ResultsScene from '$lib/env/results/results-scene.svelte'
+	import CustomizeScene from '$lib/env/customize/customize-scene.svelte'
+	import IntroContent from '$lib/env/intro/intro-content.svelte'
+	import EndContent from '$lib/env/end/end-content.svelte'
+	import TestContent from '$lib/env/test/test-content.svelte'
+	import CardsContent from '$lib/env/cards/cards-content.svelte'
+	import ResultsContent from '$lib/env/results/results-content.svelte'
+	import CustomizeContent from '$lib/env/customize/customize-content.svelte'
+	import { onMount } from 'svelte'
+	import { viewIntroState } from '$lib/changeState'
+
+	onMount(() => viewIntroState())
 </script>
 
 <World>
 	{#if $viewState === 'intro'}
-		<Intro />
+		<IntroScene />
 	{:else if $viewState === 'end'}
-		<End />
+		<EndScene />
 	{:else if $viewState === 'scene'}
 		<TestScene />
 	{:else if $viewState === 'cards'}
-		<Cards />
+		<CardsScene />
 	{:else if $viewState === 'results'}
-		<Results />
+		<ResultsScene />
 	{:else if $viewState === 'customize'}
-		<Customize />
+		<CustomizeScene />
 	{/if}
 </World>
 
-<section class="my-8 mx-4 sm:mx-8 grid grid-cols-2 grid-rows-2 absolute inset-0">
-	<div class="justify-self-start">
+<section class="my-8 mx-4 sm:mx-8 grid grid-rows-layout absolute inset-0">
+	<header class="justify-self-start">
 		<Nav />
-	</div>
+	</header>
 
-	<div class="justify-self-end">
+	<section class="justify-self-end">
 		<Roadmap />
-	</div>
+	</section>
 
-	<div class="col-span-2 justify-self-center self-end">
+	<main class="col-span-2 flex-grow justify-self-center self-center">
+		{#if $viewState === 'intro'}
+			<IntroContent />
+		{:else if $viewState === 'end'}
+			<EndContent />
+		{:else if $viewState === 'scene'}
+			<TestContent />
+		{:else if $viewState === 'cards'}
+			<CardsContent />
+		{:else if $viewState === 'results'}
+			<ResultsContent />
+		{:else if $viewState === 'customize'}
+			<CustomizeContent />
+		{/if}
+	</main>
+
+	<footer class="col-span-2 justify-self-center self-end">
 		<Description />
-	</div>
+	</footer>
 </section>
 
-<section class="absolute inset-0">
+<section class="absolute inset-0 pointer-events-none">
 	<ClickIndicators />
 </section>

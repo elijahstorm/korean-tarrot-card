@@ -3,6 +3,9 @@ module.exports = {
 	content: ["./src/**/*.{svelte,html,ts}"],
 	theme: {
 		extend: {
+			gridTemplateRows: {
+			  'layout': 'auto 1fr auto'
+			},
 			fontFamily: "Roboto, sans-serif",
 			colors: {
 				primary: {
