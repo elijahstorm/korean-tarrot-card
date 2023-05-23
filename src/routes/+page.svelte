@@ -7,7 +7,7 @@
 	import EndScene from '$lib/env/end/end-scene.svelte'
 	import TestScene from '$lib/env/test/test-scene.svelte'
 	import World from '$lib/env/world.svelte'
-	import { viewState } from '$lib/state'
+	import { viewState } from '$lib/comp/stores/state'
 	import CardsScene from '$lib/env/cards/cards-scene.svelte'
 	import ResultsScene from '$lib/env/results/results-scene.svelte'
 	import CustomizeScene from '$lib/env/customize/customize-scene.svelte'
@@ -19,6 +19,7 @@
 	import CustomizeContent from '$lib/env/customize/customize-content.svelte'
 	import { onMount } from 'svelte'
 	import { viewIntroState } from '$lib/changeState'
+	import PopupModal from '$lib/comp/popup-modal.svelte'
 
 	const viewComponents = [
 		{ state: 'intro', component: IntroContent, scene: IntroScene },
@@ -42,7 +43,7 @@
 	{/each}
 </World>
 
-<section class="py-8 px-4 sm:px-8 grid grid-rows-layout absolute inset-0 overflow-hidden">
+<section class="py-8 px-4 sm:px-8 grid grid-rows-layout absolute inset-0 overflow-hidden bg-black">
 	<header class="justify-self-start">
 		<Nav />
 	</header>
@@ -51,7 +52,7 @@
 		<Roadmap />
 	</section>
 
-	<main class="col-span-2 justify-self-center self-center">
+	<main class="col-span-2 justify-self-center self-center w-full h-full text-white">
 		{#each viewComponents as { state, component }}
 			{#if $viewState === state}
 				{#key state}
@@ -68,4 +69,6 @@
 
 <section class="absolute inset-0 pointer-events-none">
 	<ClickIndicators />
+
+	<PopupModal />
 </section>

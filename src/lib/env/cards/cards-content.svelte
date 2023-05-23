@@ -56,8 +56,8 @@
 		cards = cards.filter((card) => card.id !== id)
 		slots = [...slots, card]
 		if (slots.length >= 3) {
-			setTimeout(() => (cards = slots = []), duration * 3)
-			setTimeout(() => viewSceneState(), duration * 4)
+			setTimeout(() => (cards = slots = []), duration * 2)
+			setTimeout(() => viewSceneState(), duration * 3)
 			return
 		}
 	}
@@ -68,7 +68,7 @@
 <svelte:window bind:innerWidth />
 
 <div class="flex flex-col">
-	<div class="flex-1 flex flex-col">
+	<div class="flex-1 flex flex-col py-8">
 		<div class="responsive col-span-3 grid justify-center">
 			{#if cards.length === 0}
 				<div class="col-start-1 row-start-1 invisible" />
@@ -86,8 +86,8 @@
 								in:fly={{ delay: index * 30, y: -200 }}
 								out:fly={{ delay: index * 30 + duration, y: -200 }}
 								type="button"
-								class="relative top-[-70px] card responsive bg-blue-500 border border-black transition-all hover:bg-blue-300"
-								style="transform-origin: center {innerWidth / 4}px; rotate: {angle(
+								class="card responsive bg-blue-500 border border-black transition-all hover:bg-blue-300"
+								style="transform-origin: center {innerWidth / 3}px; rotate: {angle(
 									card.id
 								)}deg; z-index: {card.selected ? cardAmount : card.id}"
 							/>
@@ -97,7 +97,7 @@
 			{/if}
 		</div>
 
-		<div class="responsive col-span-3 grid grid-cols-3 gap-2">
+		<div class="responsive self-center col-span-3 grid grid-cols-3 gap-2 pt-10">
 			{#if slots.length === 0}
 				<div class="card responsive invisible" />
 			{:else}

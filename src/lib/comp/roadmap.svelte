@@ -1,5 +1,5 @@
 <script>
-	import { roadmapData } from '$lib/state'
+	import { roadmapData } from '$lib/comp/stores/state'
 </script>
 
 {#if $roadmapData !== null}

@@ -2,6 +2,8 @@ import { writable } from "svelte/store"
 
 type StateViews = 'intro' | 'end' | 'scene' | 'cards' | 'results' | 'customize'
 
+export const stateHistory : StateViews[] = []
+
 export const viewState = writable<StateViews>('intro')
 
 export const showNav = writable(false)

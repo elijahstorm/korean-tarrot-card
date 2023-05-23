@@ -1,6 +1,34 @@
-import { description, indicators, roadmapData, showNav, viewState } from "./state"
+import { get } from "svelte/store"
+import { description, indicators, roadmapData, showNav, stateHistory, viewState } from "./comp/stores/state"
+import { setModalState } from "./comp/stores/modalStore"
+
+
+export const navBackState = () => {
+    const back = stateHistory.pop() ?? 'intro'
+    switch(back) {
+        case 'intro':
+            viewIntroState()
+            break
+        case 'cards':
+            viewCardsState()
+            break
+        case 'scene':
+            viewSceneState()
+            break
+        case 'results':
+            viewResultsState()
+            break
+        case 'customize':
+            viewCustomizeState()
+            break
+        case 'end':
+            viewEndState()
+            break
+    }
+}
 
 export const viewIntroState = () => {
+    stateHistory.push(get(viewState))
     viewState.set('intro')
     showNav.set(false)
     description.set('')
@@ -9,6 +37,7 @@ export const viewIntroState = () => {
 }
 
 export const viewCardsState = () => {
+    stateHistory.push(get(viewState))
     viewState.set('cards')
     showNav.set(true)
     description.set('')
@@ -17,6 +46,7 @@ export const viewCardsState = () => {
 }
 
 export const viewSceneState = () => {
+    stateHistory.push(get(viewState))
     viewState.set('scene')
     showNav.set(true)
     description.set('Test description')
@@ -45,6 +75,7 @@ export const viewSceneState = () => {
 }
 
 export const viewResultsState = () => {
+    stateHistory.push(get(viewState))
     viewState.set('results')
     showNav.set(true)
     description.set('')
@@ -53,6 +84,7 @@ export const viewResultsState = () => {
 }
 
 export const viewCustomizeState = () => {
+    stateHistory.push(get(viewState))
     viewState.set('customize')
     showNav.set(true)
     description.set('')
@@ -61,9 +93,14 @@ export const viewCustomizeState = () => {
 }
 
 export const viewEndState = () => {
+    stateHistory.push(get(viewState))
     viewState.set('end')
     showNav.set(true)
     description.set('')
     indicators.set([])
     roadmapData.set(null)
+}
+
+export const viewPopupModal = () => {
+    setModalState(true)
 }
