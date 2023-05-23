@@ -3,6 +3,12 @@
 @tailwind utilities;
 
 @layer components {
+	.card {
+		aspect-ratio: 0.617;
+		height: 100%;
+		border-radius: 0.5rem;
+	}
+	
 	.btn {
 		@apply self-start px-5 py-3 inline-block rounded-lg uppercase tracking-wider font-semibold text-sm lg:text-lg sm:text-base transition focus:outline-none focus:ring focus:ring-offset-2 focus:ring-opacity-50;
 	}

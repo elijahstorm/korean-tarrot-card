@@ -20,26 +20,29 @@
 	import { onMount } from 'svelte'
 	import { viewIntroState } from '$lib/changeState'
 
+	const viewComponents = [
+		{ state: 'intro', component: IntroContent, scene: IntroScene },
+		{ state: 'cards', component: CardsContent, scene: CardsScene },
+		{ state: 'scene', component: TestContent, scene: TestScene },
+		{ state: 'results', component: ResultsContent, scene: ResultsScene },
+		{ state: 'customize', component: CustomizeContent, scene: CustomizeScene },
+		{ state: 'end', component: EndContent, scene: EndScene },
+	]
+
 	onMount(() => viewIntroState())
 </script>
 
 <World>
-	{#if $viewState === 'intro'}
-		<IntroScene />
-	{:else if $viewState === 'cards'}
-		<CardsScene />
-	{:else if $viewState === 'scene'}
-		<TestScene />
-	{:else if $viewState === 'results'}
-		<ResultsScene />
-	{:else if $viewState === 'customize'}
-		<CustomizeScene />
-	{:else if $viewState === 'end'}
-		<EndScene />
-	{/if}
+	{#each viewComponents as { state, scene }}
+		{#if $viewState === state}
+			{#key state}
+				<svelte:component this={scene} />
+			{/key}
+		{/if}
+	{/each}
 </World>
 
-<section class="my-8 mx-4 sm:mx-8 grid grid-rows-layout absolute inset-0">
+<section class="py-8 px-4 sm:px-8 grid grid-rows-layout absolute inset-0 overflow-hidden">
 	<header class="justify-self-start">
 		<Nav />
 	</header>
@@ -49,19 +52,13 @@
 	</section>
 
 	<main class="col-span-2 justify-self-center self-center">
-		{#if $viewState === 'intro'}
-			<IntroContent />
-		{:else if $viewState === 'cards'}
-			<CardsContent />
-		{:else if $viewState === 'scene'}
-			<TestContent />
-		{:else if $viewState === 'results'}
-			<ResultsContent />
-		{:else if $viewState === 'customize'}
-			<CustomizeContent />
-		{:else if $viewState === 'end'}
-			<EndContent />
-		{/if}
+		{#each viewComponents as { state, component }}
+			{#if $viewState === state}
+				{#key state}
+					<svelte:component this={component} />
+				{/key}
+			{/if}
+		{/each}
 	</main>
 
 	<footer class="col-span-2 justify-self-center self-end">

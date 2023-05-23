@@ -16,7 +16,7 @@
 	</T.OrthographicCamera>
 </T.Group>
 
-<GLTF castShadow receiveShadow url={'/models/threlte.glb'} interactive />
+<GLTF castShadow receiveShadow url={'/models/another.gltf'} interactive />
 
 <T.Mesh receiveShadow rotation.x={DEG2RAD * -90}>
 	<T.CircleGeometry args={[4, 60]} />

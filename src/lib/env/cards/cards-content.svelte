@@ -3,34 +3,18 @@
 	import { onMount } from 'svelte'
 	import { flip } from 'svelte/animate'
 	import { quintOut } from 'svelte/easing'
-	import { crossfade } from 'svelte/transition'
-
-	const [send, receive] = crossfade({
-		duration: (d) => Math.sqrt(d * 200),
-
-		fallback(node, params) {
-			const style = getComputedStyle(node)
-			const transform = style.transform === 'none' ? '' : style.transform
-
-			return {
-				duration: 600,
-				easing: quintOut,
-				css: (t) => `
-					transform: ${transform} scale(${t});
-					opacity: ${t}
-				`,
-			}
-		},
-	})
+	import { crossfade, fly } from 'svelte/transition'
 
 	type Card = {
 		id: number
-		angle: number
+		selected: boolean
 	}
 
-	const angleChange = 1.7
+	const angleChange = 2.5
 	const cardAmount = 22
+	const duration = 800
 
+	let innerWidth: number
 	let cards = new Array<Card>()
 	let slots = new Array<Card>()
 
@@ -38,11 +22,28 @@
 		for (let index = 0; index < cardAmount; index++) {
 			cards.push({
 				id: index,
-				angle: 0,
+				selected: false,
 			})
 		}
 
-		reflow()
+		cards = cards
+	})
+
+	const [send, receive] = crossfade({
+		duration,
+		fallback(node, params) {
+			const style = getComputedStyle(node)
+			const transform = style.transform === 'none' ? '' : style.transform
+
+			return {
+				duration,
+				easing: quintOut,
+				css: (t) => `
+					transform: ${transform} scale(${t});
+					opacity: ${t};
+				`,
+			}
+		},
 	})
 
 	const select = (id: number) => () => {
@@ -51,53 +52,70 @@
 		const card = cards.find((card) => card.id === id)
 		if (!card) return
 
+		card.selected = true
 		cards = cards.filter((card) => card.id !== id)
 		slots = [...slots, card]
 		if (slots.length >= 3) {
-			// todo: save data for next scenes
-			cards = []
-			slots = []
-			viewSceneState()
+			setTimeout(() => (cards = slots = []), duration * 3)
+			setTimeout(() => viewSceneState(), duration * 4)
 			return
 		}
-
-		reflow()
 	}
 
-	const reflow = () => {
-		for (let index = 0; index < cards.length; index++) {
-			cards[index].angle = (3 * cards[index].id - cardAmount * 1.5) * angleChange
-		}
-	}
+	const angle = (id: number) => ((Math.PI / 1.5) * id - cardAmount) * angleChange
 </script>
 
+<svelte:window bind:innerWidth />
+
 <div class="flex flex-col">
-	<div class="flex-1 grid grid-cols-2">
-		<div class="col-span-3 grid justify-center">
-			{#each cards as card (card.id)}
-				<button
-					on:click={select(card.id)}
-					out:send={{ key: card.id }}
-					animate:flip
-					class="card col-start-1 row-start-1 bg-blue-500 border border-black transition-colors hover:bg-blue-300"
-					style="transform-origin: center 300px; rotate: {card.angle}deg; translate: 0 -70px; z-index: {card.id}"
-					type="button"
-				/>
-			{/each}
+	<div class="flex-1 flex flex-col">
+		<div class="responsive col-span-3 grid justify-center">
+			{#if cards.length === 0}
+				<div class="col-start-1 row-start-1 invisible" />
+			{:else}
+				{#each cards as card, index (card.id)}
+					<div
+						in:receive={{ key: card.id, duration }}
+						out:send={{ key: card.id, duration }}
+						animate:flip
+						class="card responsive col-start-1 row-start-1"
+					>
+						{#if slots.length < 3}
+							<button
+								on:click={select(card.id)}
+								in:fly={{ delay: index * 30, y: -200 }}
+								out:fly={{ delay: index * 30 + duration, y: -200 }}
+								type="button"
+								class="relative top-[-70px] card responsive bg-blue-500 border border-black transition-all hover:bg-blue-300"
+								style="transform-origin: center {innerWidth / 4}px; rotate: {angle(
+									card.id
+								)}deg; z-index: {card.selected ? cardAmount : card.id}"
+							/>
+						{/if}
+					</div>
+				{/each}
+			{/if}
 		</div>
 
-		<div class="col-span-3 grid grid-cols-3 gap-2 h-[94px]">
-			{#each slots as card (card.id)}
-				<div class="card bg-blue-500 border border-black" />
-			{/each}
+		<div class="responsive col-span-3 grid grid-cols-3 gap-2">
+			{#if slots.length === 0}
+				<div class="card responsive invisible" />
+			{:else}
+				{#each slots as card (card.id)}
+					<div
+						in:receive={{ key: card.id, duration, delay: duration / 2 }}
+						out:send={{ key: card.id, duration }}
+						class="card responsive bg-blue-500 border border-black"
+					/>
+				{/each}
+			{/if}
 		</div>
 	</div>
 </div>
 
 <style>
-	.card {
-		width: 58px;
-		height: 94px;
-		border-radius: 0.25rem;
+	.responsive {
+		height: 20vh;
+		max-height: 120px;
 	}
 </style>

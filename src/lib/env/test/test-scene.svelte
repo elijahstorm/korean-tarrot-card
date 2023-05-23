@@ -1,6 +1,8 @@
 <script lang="ts">
+	import { viewResultsState } from '$lib/changeState'
 	import { T, TransformableObject, useFrame } from '@threlte/core'
 	import { GLTF } from '@threlte/extras'
+	import { onMount } from 'svelte'
 	import { DEG2RAD } from 'three/src/math/MathUtils'
 
 	let rotation = 0
@@ -8,6 +10,8 @@
 	useFrame(() => {
 		rotation += 0.002
 	})
+
+	onMount(() => setTimeout(() => viewResultsState(), 1800))
 </script>
 
 <T.Group rotation.y={rotation}>
@@ -16,7 +20,7 @@
 	</T.OrthographicCamera>
 </T.Group>
 
-<GLTF castShadow receiveShadow url={'/models/threlte.glb'} interactive />
+<GLTF castShadow receiveShadow url={'/models/test.gltf'} interactive />
 
 <T.Mesh receiveShadow rotation.x={DEG2RAD * -90}>
 	<T.CircleGeometry args={[4, 60]} />
