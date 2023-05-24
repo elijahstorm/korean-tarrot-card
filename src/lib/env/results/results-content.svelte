@@ -36,7 +36,7 @@
 	]
 </script>
 
-<div class="flex flex-col w-full h-full">
+<div class="flex flex-col w-full h-full gap-4">
 	<section class="flex-1 self-center flex gap-8 w-full">
 		<div class="flex gap-4" style="flex: 3">
 			{#each cards as card (card.id)}
@@ -64,7 +64,7 @@
 			<h3 class="text-xl py-3">{Lang.results.header}</h3>
 
 			<div class="relative">
-				<p class="custom-scrollbar pb-10 pr-2">{Lang.results.content}</p>
+				<p class="custom-scrollbar pb-10 pr-2 max-h-80">{Lang.results.content}</p>
 
 				<div
 					class="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-b from-transparent to-black"
@@ -129,36 +129,3 @@
 		</button>
 	</div>
 </div>
-
-<style>
-	/* Custom Scrollbar Styles */
-	.custom-scrollbar {
-		/* Set the height and width of the container */
-		height: 300px;
-		width: 100%;
-
-		/* Enable scrollbar */
-		overflow-y: auto;
-
-		/* Hide the default scrollbar */
-		scrollbar-width: thin;
-		scrollbar-color: transparent transparent;
-	}
-
-	.custom-scrollbar::-webkit-scrollbar {
-		width: 3px; /* Adjust the width as needed */
-	}
-
-	.custom-scrollbar::-webkit-scrollbar-track {
-		background-color: #fff3; /* Set the track color */
-	}
-
-	.custom-scrollbar::-webkit-scrollbar-thumb {
-		background-color: rgba(256, 256, 256, 0.3); /* Set the thumb color */
-		border-radius: 3px; /* Adjust the border-radius as needed */
-	}
-
-	.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-		background-color: rgba(256, 256, 256, 0.5); /* Set the thumb color on hover */
-	}
-</style>

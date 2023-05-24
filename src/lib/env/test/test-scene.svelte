@@ -2,7 +2,6 @@
 	import { viewResultsState } from '$lib/changeState'
 	import { T, TransformableObject, useFrame } from '@threlte/core'
 	import { GLTF } from '@threlte/extras'
-	import { onMount } from 'svelte'
 	import { DEG2RAD } from 'three/src/math/MathUtils'
 
 	let rotation = 0
@@ -11,7 +10,7 @@
 		rotation += 0.002
 	})
 
-	onMount(() => setTimeout(() => viewResultsState(), 1800))
+	const end = () => viewResultsState()
 </script>
 
 <T.Group rotation.y={rotation}>
