@@ -1,13 +1,12 @@
 <script lang="ts">
 	import { viewSceneState } from '$lib/changeState'
-	import { onMount } from 'svelte'
-	import { flip } from 'svelte/animate'
-	import { quintOut } from 'svelte/easing'
-	import { crossfade, fly } from 'svelte/transition'
+	import { afterUpdate, onMount } from 'svelte'
+	import { fly, scale } from 'svelte/transition'
 
 	type Card = {
 		id: number
 		selected: boolean
+		animating: boolean
 	}
 
 	const angleChange = 2.5
@@ -23,27 +22,19 @@
 			cards.push({
 				id: index,
 				selected: false,
+				animating: false,
 			})
 		}
 
 		cards = cards
 	})
 
-	const [send, receive] = crossfade({
-		duration,
-		fallback(node, params) {
-			const style = getComputedStyle(node)
-			const transform = style.transform === 'none' ? '' : style.transform
-
-			return {
-				duration,
-				easing: quintOut,
-				css: (t) => `
-					transform: ${transform} scale(${t});
-					opacity: ${t};
-				`,
-			}
-		},
+	afterUpdate(() => {
+		setTimeout(() => {
+			slots.map((card) => (card.animating = false))
+			cards = cards.filter((card) => !card.selected)
+			slots = slots
+		}, 1)
 	})
 
 	const select = (id: number) => () => {
@@ -53,7 +44,8 @@
 		if (!card) return
 
 		card.selected = true
-		cards = cards.filter((card) => card.id !== id)
+		card.animating = true
+		cards = cards
 		slots = [...slots, card]
 		if (slots.length >= 3) {
 			setTimeout(() => (cards = slots = []), duration * 2)
@@ -63,6 +55,10 @@
 	}
 
 	const angle = (id: number) => ((Math.PI / 1.5) * id - cardAmount) * angleChange
+	const cardRotation = (card: Card) =>
+		`transform-origin: center ${innerWidth / 3}px; rotate: ${angle(card.id)}deg; z-index: ${
+			card.id
+		}`
 </script>
 
 <svelte:window bind:innerWidth />
@@ -74,12 +70,7 @@
 				<div class="col-start-1 row-start-1 invisible" />
 			{:else}
 				{#each cards as card, index (card.id)}
-					<div
-						in:receive={{ key: card.id, duration }}
-						out:send={{ key: card.id, duration }}
-						animate:flip
-						class="card responsive col-start-1 row-start-1"
-					>
+					<div class="card responsive col-start-1 row-start-1">
 						{#if slots.length < 3}
 							<button
 								on:click={select(card.id)}
@@ -87,9 +78,8 @@
 								out:fly={{ delay: index * 30 + duration, y: -200 }}
 								type="button"
 								class="card responsive bg-blue-500 border border-black transition-all hover:bg-blue-300"
-								style="transform-origin: center {innerWidth / 3}px; rotate: {angle(
-									card.id
-								)}deg; z-index: {card.selected ? cardAmount : card.id}"
+								class:hidden={card.selected}
+								style={cardRotation(card)}
 							/>
 						{/if}
 					</div>
@@ -97,15 +87,21 @@
 			{/if}
 		</div>
 
-		<div class="responsive self-center col-span-3 grid grid-cols-3 gap-2 pt-10">
+		<div class="responsive self-center col-span-3 grid grid-cols-1 gap-2 pt-10">
 			{#if slots.length === 0}
 				<div class="card responsive invisible" />
 			{:else}
-				{#each slots as card (card.id)}
+				{#each slots as card, index (card.id)}
 					<div
-						in:receive={{ key: card.id, duration, delay: duration / 2 }}
-						out:send={{ key: card.id, duration }}
-						class="card responsive bg-blue-500 border border-black"
+						class="card responsive col-start-1 row-start-1 bg-blue-500 border border-black transition-all"
+						out:fly={{
+							duration: duration / 2,
+							delay: (index * duration) / 4,
+							y: 40,
+						}}
+						style="transition-duration: {duration}ms; {card.animating
+							? 'translate: 0 calc(-20vh - 1rem); ' + cardRotation(card)
+							: `translate: ${index * 100 - 100}px 2rem`}"
 					/>
 				{/each}
 			{/if}
