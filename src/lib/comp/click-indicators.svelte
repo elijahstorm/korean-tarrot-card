@@ -4,5 +4,5 @@
 </script>
 
 {#each $indicators as indicator}
-	<Indicator left={indicator.left} top={indicator.top} />
+	<Indicator id={indicator.id} left={indicator.left} top={indicator.top} />
 {/each}

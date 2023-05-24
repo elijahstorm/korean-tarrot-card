@@ -10,11 +10,11 @@ export const split =
 
 export const post = async <T>(endpoint: string, data: object): Promise<Response<T>> => {
 	return fetch(endpoint, {
-		method: "POST",
-		credentials: "include",
+		method: 'POST',
+		credentials: 'include',
 		body: JSON.stringify(data ?? {}),
 		headers: {
-			"Content-Type": "application/json"
-		}
+			'Content-Type': 'application/json',
+		},
 	}).then((r) => r.json())
 }

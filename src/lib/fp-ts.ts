@@ -86,5 +86,5 @@ export {
 	tupled,
 	constVoid,
 	ReaderTask,
-	Num
+	Num,
 }
