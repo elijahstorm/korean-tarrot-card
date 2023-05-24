@@ -1,5 +1,5 @@
 <script>
-	import { viewCardsState, viewSceneState } from '$lib/changeState'
+	import { viewCardsState, viewResultsState, viewSceneState } from '$lib/changeState'
 	import { roadmapData } from '$lib/comp/stores/state'
 	import { Lang } from '$lib/lang'
 </script>
@@ -21,6 +21,14 @@
 				type="button"
 			>
 				{Lang.scene.repeatButton}
+			</button>
+
+			<button
+				on:click={viewResultsState}
+				class="px-6 py-2 border border-zinc-500 rounded-md hover:bg-zinc-700"
+				type="button"
+			>
+				{Lang.scene.gotoResults}
 			</button>
 		</div>
 	{/if}

@@ -31,6 +31,7 @@ export const navBackState = () => {
 			viewEndState()
 			break
 	}
+	stateHistory.pop()
 }
 
 export const viewIntroState = () => {

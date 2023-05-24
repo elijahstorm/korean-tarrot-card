@@ -5,6 +5,7 @@ export const Lang = {
 	endTitle: 'END',
 	scene: {
 		repeatButton: '다음 카드 해석 보기',
+		gotoResults: 'go to your results',
 	},
 	results: {
 		headerButton: '연애운 충 해석',
