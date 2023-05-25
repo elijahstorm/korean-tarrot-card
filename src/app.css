@@ -5,7 +5,7 @@
 @layer components {
 	.card {
 		aspect-ratio: 0.617;
-		border-radius: 0.5rem;
+		border-radius: 3.5rem;
 	}
 
 	/* Custom Scrollbar Styles */

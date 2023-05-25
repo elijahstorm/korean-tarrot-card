@@ -1,7 +1,10 @@
 <script>
 	import { description } from '$lib/stores/state'
+	import { fly } from 'svelte/transition'
 </script>
 
-<p class="select-none text-white">
-	{$description}
-</p>
+{#if $description}
+	<p in:fly out:fly class="select-none text-white">
+		{$description}
+	</p>
+{/if}

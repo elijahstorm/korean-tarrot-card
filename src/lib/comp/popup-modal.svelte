@@ -1,6 +1,6 @@
 <script>
 	import { onMount, onDestroy } from 'svelte'
-	import { onStateChange, setModalState } from '../stores/modalStore' // Replace with your own store and actions
+	import { onStateChange, setModalState } from '../stores/popup-modal' // Replace with your own store and actions
 	import { fade } from 'svelte/transition'
 
 	let showModal = false

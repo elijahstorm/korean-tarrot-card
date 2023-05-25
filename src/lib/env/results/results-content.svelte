@@ -1,67 +1,39 @@
 <script>
 	import { viewCardsState, viewCustomizeState } from '$lib/utils/changeState'
 	import { Lang } from '$lib/sources/lang'
-
-	const cards = [
-		{
-			id: 0,
-			title: '과거',
-			info: '은둔자',
-			image: '',
-			item: {
-				info: '별',
-				name: '달님',
-			},
-		},
-		{
-			id: 1,
-			title: '과거',
-			info: '은둔자',
-			image: '',
-			item: {
-				info: '별',
-				name: '달님',
-			},
-		},
-		{
-			id: 2,
-			title: '과거',
-			info: '은둔자',
-			image: '',
-			item: {
-				info: '별',
-				name: '달님',
-			},
-		},
-	]
+	import { fly } from 'svelte/transition'
+	import { predictionState, selectedCardsState } from '$lib/stores/state'
+	import { allPredictions } from '$lib/sources/predictionData'
 </script>
 
 <div class="flex flex-col gap-8 h-full">
 	<section class="flex-1 flex gap-8">
 		<div class="flex gap-4" style="flex: 3">
-			{#each cards as card (card.id)}
-				<div class="flex-1 flex flex-col gap-4 justify-center">
+			{#each $selectedCardsState as card, index (card.id)}
+				<div
+					in:fly={{ delay: (1 + index) * 400 }}
+					class="flex-1 flex flex-col gap-4 justify-center"
+				>
 					<div>
-						<h5 class="text-center">{card.title}</h5>
+						<h5 class="text-center font-maruburi">{card.title}</h5>
 
 						<div
 							class="mx-8 h-0.5 bg-gradient-to-r from-transparent via-white to-transparent"
 						/>
 					</div>
 
-					<div class="card bg-blue-500 overflow-clip">
-						<img src={card.image} alt={card.title} />
-
-						<h6>{card.info}</h6>
-					</div>
+					<img src={card.image} alt={card.title} />
 				</div>
 			{/each}
 		</div>
 
 		<div class="flex flex-col gap-1 overflow-auto" style="flex: 2">
-			<div class="bg-zinc-700 px-4">{Lang.results.headerButton}</div>
+			<div class="px-4 py-2 rounded-lg bg-zinc-800 text-xl self-start">
+				{allPredictions.find((p) => p.id === $predictionState)?.title}
+				{Lang.results.predictionHeader}
+			</div>
 
-			<h3 class="text-xl py-3">{Lang.results.header}</h3>
+			<h3 class="text-xl py-3 font-maruburi">{Lang.results.header}</h3>
 
 			<div class="relative flex-1 max-h-60 overflow-hidden">
 				<p class="custom-scrollbar overflow-y-auto w-full pb-12 pr-2 max-h-60">
@@ -73,8 +45,8 @@
 				/>
 			</div>
 
-			<div class="flex flex-col px-6 py-4 border border-zinc-700 rounded-md max-w-min mt-6">
-				<h5>{Lang.results.cardInfoHeader}</h5>
+			<div class="flex flex-col px-6 py-4 border border-zinc-700 rounded-md mt-6 self-start">
+				<h5 class="font-maruburi">{Lang.results.cardInfoHeader}</h5>
 
 				<p>
 					<span class="text-sm">
@@ -87,10 +59,14 @@
 				</p>
 
 				<div class="flex gap-2 py-4 overflow-x-auto custom-scrollbar">
-					{#each cards as card (card.id)}
+					{#each $selectedCardsState as card (card.id)}
 						<div class="flex flex-col gap-2">
-							<div class="bg-zinc-700 rounded-md border border-zinc-400 p-2">
-								<img src="hey" alt="img" class="aspect-1 w-16" />
+							<div class="bg-zinc-700 rounded-md border border-zinc-600 p-2">
+								<img
+									src={card.item.image}
+									alt={card.item.name}
+									class="aspect-1 w-16"
+								/>
 							</div>
 
 							<p class="text-center">
@@ -107,9 +83,17 @@
 				</div>
 			</div>
 
-			<p class="text-zinc-600 text-xs">
-				{Lang.results.warningInfo}
-			</p>
+			<div class="flex">
+				<p
+					class="aspect-1 w-5 pl-2 mr-1 rounded-full bg-zinc-700 text-white text-sm scale-75 font-maruburi rotate-12"
+				>
+					i
+				</p>
+
+				<p class="text-zinc-600 text-xs">
+					{Lang.results.warningInfo}
+				</p>
+			</div>
 		</div>
 	</section>
 

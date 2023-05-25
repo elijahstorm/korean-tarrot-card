@@ -7,8 +7,8 @@ import {
 	stateHistory,
 	viewState,
 } from '../stores/state'
-import { setModalState } from '../stores/modalStore'
-import { getNextScene, resetSceneList } from '../stores/scenes'
+import { setModalState } from '../stores/popup-modal'
+import { drawRandomCards, getCurrentSceneData, parseScene, resetSceneList } from '../stores/scenes'
 
 export const navBackState = () => {
 	const back = stateHistory.pop() ?? 'intro'
@@ -45,7 +45,17 @@ export const viewIntroState = () => {
 	roadmapData.set(null)
 }
 
+export const viewSelectionState = () => {
+	stateHistory.push(get(viewState))
+	viewState.set('selection')
+	showNav.set(false)
+	description.set('')
+	indicators.set([])
+	roadmapData.set(null)
+}
+
 export const viewCardsState = () => {
+	drawRandomCards()
 	stateHistory.push(get(viewState))
 	viewState.set('cards')
 	showNav.set(true)
@@ -55,7 +65,7 @@ export const viewCardsState = () => {
 }
 
 export const viewSceneState = () => {
-	const { indicator, roadmap } = getNextScene()
+	const { indicator, roadmap } = parseScene(getCurrentSceneData())
 	stateHistory.push(get(viewState))
 	viewState.set('scene')
 	showNav.set(true)

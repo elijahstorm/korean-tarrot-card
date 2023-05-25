@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { activateSceneState } from '../stores/state'
+	import { activateSceneState } from '../stores/scenes'
 
 	export let left = 50
 	export let top = 50

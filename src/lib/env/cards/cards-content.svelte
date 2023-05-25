@@ -1,7 +1,8 @@
 <script lang="ts">
+	import { selectedCardsState } from '$lib/stores/state'
 	import { viewSceneState } from '$lib/utils/changeState'
 	import { afterUpdate, onMount } from 'svelte'
-	import { fly, scale } from 'svelte/transition'
+	import { fly } from 'svelte/transition'
 
 	type Card = {
 		id: number
@@ -16,6 +17,8 @@
 	let innerWidth: number
 	let cards = new Array<Card>()
 	let slots = new Array<Card>()
+	let revealCards = false
+	let zoom = false
 
 	onMount(() => {
 		for (let index = 0; index < cardAmount; index++) {
@@ -48,8 +51,10 @@
 		cards = cards
 		slots = [...slots, card]
 		if (slots.length >= 3) {
-			setTimeout(() => (cards = slots = []), duration * 2)
-			setTimeout(() => viewSceneState(), duration * 3)
+			setTimeout(() => (revealCards = true), duration * 2)
+			setTimeout(() => (zoom = true), duration * 3)
+			setTimeout(() => (cards = slots = []), duration * 5)
+			setTimeout(() => viewSceneState(), duration * 6)
 			return
 		}
 	}
@@ -77,7 +82,7 @@
 								in:fly={{ delay: index * 30, y: -200 }}
 								out:fly={{ delay: index * 30 + duration, y: -200 }}
 								type="button"
-								class="card responsive bg-blue-500 border border-black transition-all hover:bg-blue-300"
+								class="card responsive border border-black transition-all"
 								class:hidden={card.selected}
 								style={cardRotation(card)}
 							>
@@ -89,13 +94,16 @@
 			{/if}
 		</div>
 
-		<div class="responsive self-center col-span-3 grid grid-cols-1 gap-2 pt-16">
+		<div
+			class="responsive self-center col-span-3 grid grid-cols-1 gap-2 pt-16 transition-all duration-700"
+			style={zoom ? 'scale: 2.5' : ''}
+		>
 			{#if slots.length === 0}
 				<div class="card responsive invisible" />
 			{:else}
 				{#each slots as card, index (card.id)}
 					<div
-						class="card responsive col-start-1 row-start-1 bg-blue-500 border border-black transition-all"
+						class="card responsive col-start-1 row-start-1 grid border border-black transition-all"
 						out:fly={{
 							duration: duration / 2,
 							delay: (index * duration) / 4,
@@ -105,12 +113,38 @@
 							? 'translate: 0 calc(max(-20vh, -120px) - 4rem); ' + cardRotation(card)
 							: `translate: calc(${index} * (min(20vh, 120px) * (0.617 + 0.25)) - min(20vh, 120px)) 0`}"
 					>
-						<img src="cards/behind.png" alt="card background" />
+						<img
+							class="col-start-1 row-start-1 transition-all"
+							class:scale-x-0={revealCards}
+							class:scale-x-100={!revealCards}
+							src="cards/behind.png"
+							alt="card background"
+							style="transition-duration: {duration /
+								4}ms; transition-delay: {(index * duration) / 4}ms"
+						/>
+
+						<img
+							class="col-start-1 row-start-1 transition-all dur"
+							class:scale-x-100={revealCards}
+							class:scale-x-0={!revealCards}
+							src={$selectedCardsState[index].image}
+							alt={$selectedCardsState[index].title}
+							style="transition-duration: {duration / 4}ms; transition-delay: {((1 +
+								index) *
+								duration) /
+								4}ms"
+						/>
 					</div>
 				{/each}
 			{/if}
 		</div>
 	</div>
+</div>
+
+<div class="hidden">
+	{#each $selectedCardsState as card}
+		<img src={card.image} alt={card.title} />
+	{/each}
 </div>
 
 <style>

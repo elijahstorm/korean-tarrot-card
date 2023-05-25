@@ -1,9 +1,9 @@
 <script>
-	import { viewCardsState } from '$lib/utils/changeState'
+	import { viewSelectionState } from '$lib/utils/changeState'
 	import { Lang } from '$lib/sources/lang'
 </script>
 
-<div class="w-full h-full flex flex-col">
+<div class="h-full flex flex-col">
 	<div class="flex flex-col flex-1 justify-center">
 		<div class="grid">
 			<h1
@@ -25,8 +25,8 @@
 	</div>
 
 	<button
-		on:click={viewCardsState}
-		class="btn mx-auto text-xl border rounded-full px-8 py-2 text-white border-white transition-colors opacity-70 hover:bg-white hover:text-black hover:opacity-100"
+		on:click={viewSelectionState}
+		class="btn mx-auto text-xl border rounded-full px-8 py-2 text-white border-white opacity-70 transition-all hover:px-12 hover:bg-zinc-700 hover:opacity-100"
 		type="button">{Lang.startButton}</button
 	>
 </div>

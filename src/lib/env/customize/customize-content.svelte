@@ -1,18 +1,24 @@
 <script lang="ts">
+	import { fly } from 'svelte/transition'
+
 	const attributes = [
 		{
+			id: 0,
 			value: 'bg-blue-500',
 			name: 'Blue',
 		},
 		{
+			id: 1,
 			value: 'bg-red-500',
 			name: 'Red',
 		},
 		{
+			id: 2,
 			value: 'bg-green-500',
 			name: 'Green',
 		},
 		{
+			id: 3,
 			value: 'bg-yellow-500',
 			name: 'Yellow',
 		},
@@ -23,17 +29,20 @@
 	const selectAttribute = (attribute: string) => () => (selectedAttribute = attribute)
 </script>
 
-<div class="flex gap-4">
-	<div class="w-2/5">
-		<div class="card p-4 m-4 {selectedAttribute}" />
+<div class="flex gap-4 pt-8">
+	<div class="flex-1">
+		<div
+			class="card max-h-full p-4 m-4 ring-offset-2 ring-gray-600 ring-offset-black ring-2 ring-opacity-100 {selectedAttribute}"
+		/>
 	</div>
 
-	<div class="w-3/5 flex flex-col gap-6 text-xs">
+	<div class="flex flex-col gap-12 text-xs">
 		<div class="flex gap-4 custom-scrollbar p-1 pb-4">
-			{#each attributes as attribute}
+			{#each attributes as attribute, index (attribute.id)}
 				<button
+					in:fly={{ y: 50, delay: (1 + index) * 100, duration: 200 }}
 					on:click={selectAttribute(attribute.value)}
-					class="btn w-14 h-36 rounded overflow-clip ring-2 ring-offset-2 ring-gray-600 ring-offset-black focus:ring-2 focus:ring-opacity-100 {attribute.value}"
+					class="btn w-14 h-36 rounded overflow-clip ring-2 ring-offset-2 ring-offset-black {attribute.value}"
 					class:ring-gray-600={selectedAttribute !== attribute.value}
 					class:ring-white={selectedAttribute === attribute.value}
 					type="button"
@@ -44,9 +53,10 @@
 		<div class="mx-8 h-0.5 bg-gradient-to-r from-transparent via-white to-transparent" />
 
 		<div class="flex gap-4 custom-scrollbar pb-4">
-			{#each attributes as attribute}
+			{#each attributes as attribute, index (attribute.id)}
 				<div
-					class="octagon aspect-1 w-[6.6rem]"
+					in:fly={{ y: 50, delay: (3 + index) * 100, duration: 200 }}
+					class="octagon aspect-1 w-[6.6rem] transition"
 					class:bg-gray-600={selectedAttribute !== attribute.value}
 					class:bg-white={selectedAttribute === attribute.value}
 				>
