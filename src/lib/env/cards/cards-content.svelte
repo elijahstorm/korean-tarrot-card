@@ -87,7 +87,7 @@
 			{/if}
 		</div>
 
-		<div class="responsive self-center col-span-3 grid grid-cols-1 gap-2 pt-10">
+		<div class="responsive self-center col-span-3 grid grid-cols-1 gap-2 pt-16">
 			{#if slots.length === 0}
 				<div class="card responsive invisible" />
 			{:else}
@@ -100,9 +100,10 @@
 							y: 40,
 						}}
 						style="transition-duration: {duration}ms; {card.animating
-							? 'translate: 0 calc(-20vh - 1rem); ' + cardRotation(card)
-							: `translate: ${index * 100 - 100}px 2rem`}"
+							? 'translate: 0 calc(max(-20vh, -120px) - 4rem); ' + cardRotation(card)
+							: `translate: calc(${index} * (min(20vh, 120px) * (0.617 + 0.25)) - min(20vh, 120px)) 0`}"
 					/>
+					<!-- /aspect-ratio: 0.617; -->
 				{/each}
 			{/if}
 		</div>
