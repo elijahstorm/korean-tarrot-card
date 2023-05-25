@@ -59,7 +59,7 @@
 		</div>
 
 		<div class="flex flex-col gap-1 overflow-auto" style="flex: 2">
-			<button class="btn bg-zinc-700 px-4">{Lang.results.headerButton}</button>
+			<div class="bg-zinc-700 px-4">{Lang.results.headerButton}</div>
 
 			<h3 class="text-xl py-3">{Lang.results.header}</h3>
 

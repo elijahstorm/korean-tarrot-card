@@ -80,7 +80,9 @@
 								class="card responsive bg-blue-500 border border-black transition-all hover:bg-blue-300"
 								class:hidden={card.selected}
 								style={cardRotation(card)}
-							/>
+							>
+								<img src="cards/behind.png" alt="card background" />
+							</button>
 						{/if}
 					</div>
 				{/each}
@@ -102,7 +104,9 @@
 						style="transition-duration: {duration}ms; {card.animating
 							? 'translate: 0 calc(max(-20vh, -120px) - 4rem); ' + cardRotation(card)
 							: `translate: calc(${index} * (min(20vh, 120px) * (0.617 + 0.25)) - min(20vh, 120px)) 0`}"
-					/>
+					>
+						<img src="cards/behind.png" alt="card background" />
+					</div>
 				{/each}
 			{/if}
 		</div>

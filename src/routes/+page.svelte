@@ -43,7 +43,10 @@
 	{/each}
 </World>
 
-<section class="py-8 px-4 sm:px-8 grid grid-rows-layout absolute inset-0 overflow-hidden">
+<section
+	class="py-8 px-4 sm:px-8 grid grid-rows-layout absolute inset-0 overflow-hidden"
+	class:bg-black={true}
+>
 	<header class="justify-self-start">
 		<Nav />
 	</header>

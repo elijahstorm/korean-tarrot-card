@@ -1,6 +1,6 @@
 export const Lang = {
 	title: '동양의 타로타드',
-	subtitle: 'a lot...',
+	subtitle: '동양의 타로타드',
 	startButton: '시작하기',
 	endTitle: 'END',
 	scene: {
