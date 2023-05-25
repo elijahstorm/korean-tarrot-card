@@ -1,5 +1,7 @@
-<script>
+<script lang="ts">
 	import '../app.css'
 </script>
 
-<slot />
+<div class="font-pretendard">
+	<slot />
+</div>

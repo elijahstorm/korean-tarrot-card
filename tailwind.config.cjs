@@ -3,10 +3,13 @@ module.exports = {
 	content: ['./src/**/*.{svelte,html,ts}'],
 	theme: {
 		extend: {
+			fontFamily: {
+				pretendard: ['Pretendard'],
+				maruburi: ['MaruBuri'],
+			},
 			gridTemplateRows: {
 				layout: 'auto 1fr auto',
 			},
-			fontFamily: 'Roboto, sans-serif',
 			colors: {
 				primary: {
 					'dark-blue': 'hsl(233, 26%, 24%)',
