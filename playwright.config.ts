@@ -1,70 +1,70 @@
-import type { PlaywrightTestConfig } from "@playwright/test"
-import { devices } from "@playwright/test"
+import type { PlaywrightTestConfig } from '@playwright/test'
+import { devices } from '@playwright/test'
 
 const config: PlaywrightTestConfig = {
-	testDir: "./tests",
+	testDir: './tests',
 	timeout: 30 * 1000,
 	expect: {
-		timeout: 5000
+		timeout: 5000,
 	},
 	fullyParallel: true,
 	forbidOnly: !!process.env.CI,
 	retries: process.env.CI ? 2 : 0,
 	workers: process.env.CI ? 1 : undefined,
-	reporter: "html",
+	reporter: 'html',
 	use: {
-		baseURL: "http://localhost:3000",
-		trace: "on-first-retry"
+		baseURL: 'http://localhost:3000',
+		trace: 'on-first-retry',
 	},
 	projects: [
 		{
-			name: "chromium",
+			name: 'chromium',
 			use: {
-				...devices["Desktop Chrome"]
-			}
+				...devices['Desktop Chrome'],
+			},
 		},
 
 		{
-			name: "firefox",
+			name: 'firefox',
 			use: {
-				...devices["Desktop Firefox"]
-			}
+				...devices['Desktop Firefox'],
+			},
 		},
 
 		{
-			name: "webkit",
+			name: 'webkit',
 			use: {
-				...devices["Desktop Safari"]
-			}
+				...devices['Desktop Safari'],
+			},
 		},
 
 		/* Test against mobile viewports. */
 		{
-			name: "Mobile Chrome",
+			name: 'Mobile Chrome',
 			use: {
-				...devices["Pixel 5"]
-			}
+				...devices['Pixel 5'],
+			},
 		},
 		{
-			name: "Mobile Safari",
+			name: 'Mobile Safari',
 			use: {
-				...devices["iPhone 12"]
-			}
+				...devices['iPhone 12'],
+			},
 		},
 
 		/* Test against branded browsers. */
 		{
-			name: "Google Chrome",
+			name: 'Google Chrome',
 			use: {
-				channel: "chrome"
-			}
-		}
+				channel: 'chrome',
+			},
+		},
 	],
-	outputDir: "test-results/",
+	outputDir: 'test-results/',
 	webServer: {
-		command: "pnpm dev --port 3000",
-		port: 3000
-	}
+		command: 'pnpm dev --port 3000',
+		port: 3000,
+	},
 }
 
 export default config
