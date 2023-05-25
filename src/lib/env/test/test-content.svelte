@@ -1,7 +1,7 @@
 <script>
-	import { viewCardsState, viewResultsState, viewSceneState } from '$lib/changeState'
-	import { roadmapData } from '$lib/comp/stores/state'
-	import { Lang } from '$lib/lang'
+	import { viewCardsState, viewResultsState, viewSceneState } from '$lib/utils/changeState'
+	import { roadmapData } from '$lib/stores/state'
+	import { Lang } from '$lib/sources/lang'
 </script>
 
 <div class="flex h-full justify-end items-end relative bottom-0">

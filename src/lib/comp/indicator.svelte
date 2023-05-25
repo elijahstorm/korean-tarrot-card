@@ -1,15 +1,12 @@
 <script lang="ts">
-	import { roadmapData } from './stores/state'
+	import { activateSceneState } from '../stores/state'
 
 	export let left = 50
 	export let top = 50
 
 	export let id: number
 
-	const select = () =>
-		roadmapData.update((data) =>
-			!data ? null : { ...data, seen: [...data.seen, id], currentTab: id }
-		)
+	const select = () => activateSceneState(id)
 
 	$: style = `left: ${left}%; top: ${top}%;`
 </script>

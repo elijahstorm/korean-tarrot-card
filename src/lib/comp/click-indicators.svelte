@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { indicators } from '$lib/comp/stores/state'
+	import { indicators } from '$lib/stores/state'
 	import Indicator from './indicator.svelte'
 </script>
 

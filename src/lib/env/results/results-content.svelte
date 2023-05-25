@@ -1,6 +1,6 @@
 <script>
-	import { viewCardsState, viewCustomizeState } from '$lib/changeState'
-	import { Lang } from '$lib/lang'
+	import { viewCardsState, viewCustomizeState } from '$lib/utils/changeState'
+	import { Lang } from '$lib/sources/lang'
 
 	const cards = [
 		{

@@ -1,5 +1,5 @@
 <script>
-	import { description } from '$lib/comp/stores/state'
+	import { description } from '$lib/stores/state'
 </script>
 
 <p class="select-none text-white">

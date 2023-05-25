@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { viewSceneState } from '$lib/changeState'
+	import { viewSceneState } from '$lib/utils/changeState'
 	import { afterUpdate, onMount } from 'svelte'
 	import { fly, scale } from 'svelte/transition'
 

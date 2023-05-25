@@ -1,6 +1,6 @@
 <script>
-	import { viewCardsState } from '$lib/changeState'
-	import { Lang } from '$lib/lang'
+	import { viewCardsState } from '$lib/utils/changeState'
+	import { Lang } from '$lib/sources/lang'
 </script>
 
 <div class="w-full h-full flex flex-col">

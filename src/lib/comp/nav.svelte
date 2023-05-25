@@ -1,6 +1,6 @@
 <script>
-	import { navBackState, viewIntroState, viewPopupModal } from '$lib/changeState'
-	import { showNav } from '$lib/comp/stores/state'
+	import { navBackState, viewIntroState, viewPopupModal } from '$lib/utils/changeState'
+	import { showNav } from '$lib/stores/state'
 </script>
 
 {#if $showNav}

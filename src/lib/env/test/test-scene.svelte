@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { viewResultsState } from '$lib/changeState'
+	import { viewResultsState } from '$lib/utils/changeState'
 	import { T, TransformableObject, useFrame } from '@threlte/core'
 	import { GLTF } from '@threlte/extras'
 	import { DEG2RAD } from 'three/src/math/MathUtils'

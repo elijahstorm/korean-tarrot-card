@@ -1,10 +1,7 @@
 <script lang="ts">
-	import { roadmapData } from '$lib/comp/stores/state'
+	import { activateSceneState, roadmapData } from '$lib/stores/state'
 
-	const changeCurrentTab = (id: number) => () =>
-		roadmapData.update((data) =>
-			!data ? null : { ...data, seen: [...data.seen, id], currentTab: id }
-		)
+	const changeCurrentTab = (id: number) => () => activateSceneState(id)
 </script>
 
 {#if $roadmapData !== null}

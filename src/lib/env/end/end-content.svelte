@@ -1,5 +1,5 @@
 <script>
-	import { Lang } from '$lib/lang'
+	import { Lang } from '$lib/sources/lang'
 </script>
 
 <h1 class="text-center mb-4">{Lang.endTitle}</h1>

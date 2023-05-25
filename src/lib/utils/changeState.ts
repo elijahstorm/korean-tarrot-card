@@ -6,8 +6,9 @@ import {
 	showNav,
 	stateHistory,
 	viewState,
-} from './comp/stores/state'
-import { setModalState } from './comp/stores/modalStore'
+} from '../stores/state'
+import { setModalState } from '../stores/modalStore'
+import { getNextScene, resetSceneList } from '../stores/scenes'
 
 export const navBackState = () => {
 	const back = stateHistory.pop() ?? 'intro'
@@ -35,6 +36,7 @@ export const navBackState = () => {
 }
 
 export const viewIntroState = () => {
+	resetSceneList()
 	stateHistory.push(get(viewState))
 	viewState.set('intro')
 	showNav.set(false)
@@ -53,46 +55,13 @@ export const viewCardsState = () => {
 }
 
 export const viewSceneState = () => {
+	const { indicator, roadmap } = getNextScene()
 	stateHistory.push(get(viewState))
 	viewState.set('scene')
 	showNav.set(true)
-	description.set('Test description')
-	indicators.set([
-		{
-			id: 1,
-			left: 40,
-			top: 50,
-		},
-		{
-			id: 2,
-			left: 50,
-			top: 20,
-		},
-		{
-			id: 3,
-			left: 30,
-			top: 60,
-		},
-	])
-	roadmapData.set({
-		title: '연에운',
-		points: [
-			{
-				id: 1,
-				name: '과거 - 운돌자',
-			},
-			{
-				id: 2,
-				name: '현재 - 정의',
-			},
-			{
-				id: 3,
-				name: '미래 - 절제',
-			},
-		],
-		currentTab: 0,
-		seen: [],
-	})
+	description.set('')
+	indicators.set(indicator)
+	roadmapData.set(roadmap)
 }
 
 export const viewResultsState = () => {
