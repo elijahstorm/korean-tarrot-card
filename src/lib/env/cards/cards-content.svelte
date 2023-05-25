@@ -103,7 +103,6 @@
 							? 'translate: 0 calc(max(-20vh, -120px) - 4rem); ' + cardRotation(card)
 							: `translate: calc(${index} * (min(20vh, 120px) * (0.617 + 0.25)) - min(20vh, 120px)) 0`}"
 					/>
-					<!-- /aspect-ratio: 0.617; -->
 				{/each}
 			{/if}
 		</div>
