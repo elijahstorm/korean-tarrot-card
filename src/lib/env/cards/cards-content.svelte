@@ -1,8 +1,10 @@
 <script lang="ts">
-	import { selectedCardsState } from '$lib/stores/state'
+	import { Lang } from '$lib/sources/lang'
+	import { selectedCardsState, viewState } from '$lib/stores/state'
 	import { viewSceneState } from '$lib/utils/changeState'
 	import { afterUpdate, onMount } from 'svelte'
-	import { fly } from 'svelte/transition'
+	import { get } from 'svelte/store'
+	import { fade, fly } from 'svelte/transition'
 
 	type Card = {
 		id: number
@@ -34,10 +36,12 @@
 
 	afterUpdate(() => {
 		setTimeout(() => {
+			if (get(viewState) !== 'cards') return
+
 			slots.map((card) => (card.animating = false))
 			cards = cards.filter((card) => !card.selected)
 			slots = slots
-		}, 1)
+		}, 0)
 	})
 
 	const select = (id: number) => () => {
@@ -50,6 +54,7 @@
 		card.animating = true
 		cards = cards
 		slots = [...slots, card]
+
 		if (slots.length >= 3) {
 			setTimeout(() => (revealCards = true), duration * 2)
 			setTimeout(() => (zoom = true), duration * 3)
@@ -59,7 +64,13 @@
 		}
 	}
 
+	const getDuration = (params: { delay?: number; duration?: number }) => ({
+		delay: get(viewState) === 'cards' ? params.delay : 0,
+		duration: get(viewState) === 'cards' ? params.duration : 0,
+	})
+
 	const angle = (id: number) => ((Math.PI / 1.5) * id - cardAmount) * angleChange
+
 	const cardRotation = (card: Card) =>
 		`transform-origin: center ${innerWidth / 3}px; rotate: ${angle(card.id)}deg; z-index: ${
 			card.id
@@ -87,7 +98,10 @@
 							<button
 								on:click={select(card.id)}
 								in:fly={{ delay: index * 30, y: -200 }}
-								out:fly={{ delay: index * 30 + duration, y: -200 }}
+								out:fly={{
+									...getDuration({ delay: index * 30 + duration }),
+									y: -200,
+								}}
 								type="button"
 								class="card responsive border border-black transition-all"
 								class:hidden={card.selected}
@@ -102,7 +116,7 @@
 		</div>
 
 		<div
-			class="responsive self-center col-span-3 grid grid-cols-1 gap-2 pt-16 transition-all duration-700"
+			class="responsive self-center col-span-3 grid grid-cols-1 mt-14 pt-16 transition-all duration-700"
 			style={zoom ? 'scale: 2.5' : ''}
 		>
 			{#if slots.length === 0}
@@ -112,12 +126,15 @@
 					<div
 						class="card responsive col-start-1 row-start-1 grid border border-black transition-all"
 						out:fly={{
-							duration: duration / 2,
-							delay: (index * duration) / 4,
+							...getDuration({
+								duration: duration / 2,
+								delay: (index * duration) / 4,
+							}),
 							y: 40,
 						}}
 						style="transition-duration: {duration}ms; {card.animating
-							? 'translate: 0 calc(max(-20vh, -120px) - 4rem); ' + cardRotation(card)
+							? 'translate: 0 calc(max(-20vh, -120px) - 7.5rem); ' +
+							  cardRotation(card)
 							: `translate: calc(${index} * (min(20vh, 120px) * (0.617 + 0.25)) - min(20vh, 120px)) 0`}"
 					>
 						<img
@@ -147,6 +164,31 @@
 				{/each}
 			{/if}
 		</div>
+
+		{#if !zoom}
+			<div
+				class="grid self-center -mt-24 pt-2"
+				out:fade={{ ...getDuration({ duration: duration / 2 }) }}
+			>
+				{#each Lang.timelineNames as name, index (name)}
+					<div
+						class="flex flex-col col-start-1 row-start-1 space-y-2 items-center"
+						style="translate: calc({index} * (min(20vh, 120px) * (0.617 + 0.25)) - min(20vh, 120px)) 0"
+					>
+						<p class="font-maruburi">
+							{name}
+						</p>
+
+						{#if !slots[index]}
+							<div
+								class="card responsive border-2 border-dashed border-zinc-600"
+								out:fade={{ ...getDuration({ duration: duration / 3 }) }}
+							/>
+						{/if}
+					</div>
+				{/each}
+			</div>
+		{/if}
 	</div>
 </div>
 

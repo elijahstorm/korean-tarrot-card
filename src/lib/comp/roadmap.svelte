@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { Lang } from '$lib/sources/lang'
 	import { changeScene } from '$lib/stores/scenes'
 	import { currentDisplayedScene, roadmapData, selectedCardsState } from '$lib/stores/state'
 
@@ -23,7 +24,7 @@
 			</div>
 
 			<div class="flex flex-col gap-4 text-sm py-0.5 -ml-3 opacity-70">
-				{#each $selectedCardsState as card (card.id)}
+				{#each $selectedCardsState as card, index (card.id)}
 					<div class="grid group">
 						<div
 							class="col-start-1 row-start-1 bg-gradient-to-r from-stone-900 via-stone-500 to-stone-900 opacity-0 transition-opacity"
@@ -39,7 +40,7 @@
 							class="col-start-1 row-start-1 text-left py-1 px-2 pl-3 z-10"
 							type="button"
 						>
-							{card.title}
+							{Lang.timelineNames[index]} - {card.title}
 						</button>
 					</div>
 				{/each}

@@ -19,7 +19,7 @@
 	</T.OrthographicCamera>
 </T.Group>
 
-{#each getCurrentSceneData()[0].objects as object}
+{#each getCurrentSceneData().objects as object}
 	<GLTF castShadow receiveShadow {...object} />
 {/each}
 

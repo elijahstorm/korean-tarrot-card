@@ -32,7 +32,7 @@
 <div class="flex gap-4 pt-8">
 	<div class="flex-1">
 		<div
-			class="card max-h-full p-4 m-4 ring-offset-2 ring-gray-600 ring-offset-black ring-2 ring-opacity-100 {selectedAttribute}"
+			class="card rounded-[3.5rem] max-h-full p-4 m-4 ring-offset-2 ring-gray-600 ring-offset-black ring-2 ring-opacity-100 {selectedAttribute}"
 		/>
 	</div>
 

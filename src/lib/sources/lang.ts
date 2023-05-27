@@ -4,6 +4,7 @@ export const Lang = {
 	subtitle2: '행운카드를 만들어 더 좋은 운을 얻거나 나에게 부족한 운을 보완해보세요.',
 	startButton: '시작하기',
 	endTitle: 'END',
+	timelineNames: ['과거', '현재', '미래'],
 	scene: {
 		nextScreenButton: '다음 카드 해석 보기',
 		gotoResults: '총 운 해석 보기',

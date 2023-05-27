@@ -10,14 +10,14 @@ import {
 	description,
 	indicators,
 	seenCardsState,
+	predictionState,
 } from './state'
 import { allCards } from '$lib/sources/cardData'
+import { allPredictions } from '$lib/sources/predictionData'
 
 export const scenes = writable<Scene[]>([])
 
-export const parseScene = (input: [Scene, Card]): { indicator: Indicator; roadmap: Roadmap } => {
-	const [scene, card] = input
-
+export const parseScene = (scene: Scene): { indicator: Indicator; roadmap: Roadmap } => {
 	const indicator = scene.points.map((point) => ({
 		id: point.id,
 		left: point.left,
@@ -25,12 +25,11 @@ export const parseScene = (input: [Scene, Card]): { indicator: Indicator; roadma
 	}))
 
 	const roadmap = {
-		title: card.title,
+		title: getCurrentPredictionData().title,
 		points: scene.points.map(
 			(point) =>
 				({
 					id: point.id,
-					name: point.name,
 					description: point.description,
 				} as SceneEventPoint)
 		) as [SceneEventPoint, SceneEventPoint, SceneEventPoint],
@@ -58,11 +57,12 @@ export const resetSceneList = () => {
 	scenes.set(shuffleArray([...allScenes]))
 }
 
-export const getCurrentSceneData = () =>
-	[
-		allScenes.find((scene) => scene.id === get(currentDisplayedScene)) ?? allScenes[0],
-		allCards.find((scene) => scene.id === get(currentDisplayedScene)) ?? allCards[0],
-	] as [Scene, Card]
+const getFromData = <T extends { id: number }>(dataSource: T[]) =>
+	dataSource.find((data) => data.id === get(predictionState)) ?? dataSource[0]
+
+export const getCurrentPredictionData = () => getFromData(allPredictions)
+
+export const getCurrentSceneData = () => getFromData(allScenes)
 
 export const activateSceneState = (id: number) => {
 	roadmapData.update((data) =>

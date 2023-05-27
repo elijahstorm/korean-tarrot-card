@@ -21,7 +21,6 @@ type Prediction = {
 
 type ActionPoint = {
 	id: number
-	name: string
 	left: number
 	top: number
 	description: string

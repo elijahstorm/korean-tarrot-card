@@ -16,6 +16,9 @@ export const navBackState = () => {
 		case 'intro':
 			viewIntroState()
 			break
+		case 'selection':
+			viewSelectionState()
+			break
 		case 'cards':
 			viewCardsState()
 			break
@@ -35,71 +38,72 @@ export const navBackState = () => {
 	stateHistory.pop()
 }
 
-export const viewIntroState = () => {
+const addToHistory = (callback: VoidFunction) => () => {
+	if (stateHistory[stateHistory.length - 1] !== get(viewState)) {
+		stateHistory.push(get(viewState))
+	}
+
+	callback()
+}
+
+export const viewIntroState = addToHistory(() => {
 	resetSceneList()
-	stateHistory.push(get(viewState))
 	viewState.set('intro')
 	showNav.set(false)
 	description.set('')
 	indicators.set([])
 	roadmapData.set(null)
-}
+})
 
-export const viewSelectionState = () => {
-	stateHistory.push(get(viewState))
+export const viewSelectionState = addToHistory(() => {
 	viewState.set('selection')
 	showNav.set(true)
 	description.set('')
 	indicators.set([])
 	roadmapData.set(null)
-}
+})
 
-export const viewCardsState = () => {
+export const viewCardsState = addToHistory(() => {
 	drawRandomCards()
-	stateHistory.push(get(viewState))
 	viewState.set('cards')
 	showNav.set(true)
 	description.set('')
 	indicators.set([])
 	roadmapData.set(null)
-}
+})
 
-export const viewSceneState = () => {
+export const viewSceneState = addToHistory(() => {
 	const { indicator, roadmap } = parseScene(getCurrentSceneData())
-	stateHistory.push(get(viewState))
 	viewState.set('scene')
 	showNav.set(true)
 	description.set('')
 	indicators.set(indicator)
 	roadmapData.set(roadmap)
-}
+})
 
-export const viewResultsState = () => {
-	stateHistory.push(get(viewState))
+export const viewResultsState = addToHistory(() => {
 	viewState.set('results')
 	showNav.set(true)
 	description.set('')
 	indicators.set([])
 	roadmapData.set(null)
-}
+})
 
-export const viewCustomizeState = () => {
-	stateHistory.push(get(viewState))
+export const viewCustomizeState = addToHistory(() => {
 	viewState.set('customize')
 	showNav.set(true)
 	description.set('')
 	indicators.set([])
 	roadmapData.set(null)
-}
+})
 
-export const viewEndState = () => {
-	stateHistory.push(get(viewState))
+export const viewEndState = addToHistory(() => {
 	viewState.set('end')
 	showNav.set(true)
 	description.set('')
 	indicators.set([])
 	roadmapData.set(null)
-}
+})
 
 export const viewPopupModal = () => {
 	setModalState(true)
