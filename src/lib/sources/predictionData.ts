@@ -5,7 +5,7 @@ export const allPredictions: Prediction[] = [
 	},
 	{
 		id: 1,
-		title: '연에운',
+		title: '연애운',
 	},
 	{
 		id: 2,

@@ -48,7 +48,7 @@
 					class="px-6 py-2 border border-zinc-500 rounded-md hover:bg-zinc-700"
 					type="button"
 				>
-					{Lang.scene.nextSceenButton}
+					{Lang.scene.nextScreenButton}
 				</button>
 			{/if}
 		</div>

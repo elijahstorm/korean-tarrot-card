@@ -68,6 +68,13 @@
 
 <svelte:window bind:innerWidth />
 
+<svelte:head>
+	{#each $selectedCardsState as card}
+		<link rel="preload" as="image" href={card.smallImage} />
+		<link rel="preload" as="image" href={card.image} />
+	{/each}
+</svelte:head>
+
 <div class="flex flex-col">
 	<div class="flex-1 flex flex-col py-8">
 		<div class="responsive col-span-3 grid justify-center">
@@ -127,7 +134,9 @@
 							class="col-start-1 row-start-1 transition-all dur"
 							class:scale-x-100={revealCards}
 							class:scale-x-0={!revealCards}
-							src={$selectedCardsState[index].image}
+							src={zoom
+								? $selectedCardsState[index].image
+								: $selectedCardsState[index].smallImage}
 							alt={$selectedCardsState[index].title}
 							style="transition-duration: {duration / 4}ms; transition-delay: {((1 +
 								index) *
@@ -139,12 +148,6 @@
 			{/if}
 		</div>
 	</div>
-</div>
-
-<div class="hidden">
-	{#each $selectedCardsState as card}
-		<img src={card.image} alt={card.title} />
-	{/each}
 </div>
 
 <style>

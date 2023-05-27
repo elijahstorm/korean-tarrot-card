@@ -9,7 +9,7 @@
 	}
 </script>
 
-<div class="h-full flex gap-16 justify-between items-center">
+<div class="h-full flex gap-16 justify-between items-center max-w-7xl mx-auto sm:p-0">
 	{#each allPredictions as prediction}
 		<button on:click={choose(prediction.id)} class="space-y-20 group" type="button">
 			<div class="grid">

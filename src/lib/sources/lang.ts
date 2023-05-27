@@ -1,22 +1,24 @@
 export const Lang = {
 	title: '동양의 타로타드',
-	subtitle: '동양의 타로타드',
+	subtitle: '원하는 운세를 확인하고 카드 속 공간을 탐험해보세요.',
+	subtitle2: '행운카드를 만들어 더 좋은 운을 얻거나 나에게 부족한 운을 보완해보세요.',
 	startButton: '시작하기',
 	endTitle: 'END',
 	scene: {
-		nextSceenButton: '다음 카드 해석 보기',
-		gotoResults: 'go to your results',
+		nextScreenButton: '다음 카드 해석 보기',
+		gotoResults: '총 운 해석 보기',
 	},
 	results: {
-		predictionHeader: '충 해석',
-		header: '멀어진....',
+		predictionHeader: '총 해석',
+		header: '"과거에 사로잡히지 말고 인연을 마주하세요."',
 		content:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur massa eget dolor fringilla, id tempor turpis consectetur. Nulla condimentum sapien non consectetur venenatis. Mauris eget fringilla neque. Sed tincidunt, leo ac volutpat vulputate, ligula nunc fringilla sem, sit amet accumsan ipsum urna vitae leo. Aliquam tincidunt, urna vel luctus fringilla, nulla ex consectetur urna, vitae facilisis sem risus nec lectus. Integer tristique varius tortor, id facilisis lacus mattis non. In hac habitasse platea dictumst. Suspendisse sed lectus pharetra, interdum urna ut, lacinia purus. Phasellus porttitor posuere viverra. Maecenas vulputate, lacus at volutpat iaculis, mauris purus vestibulum dolor, sit amet tincidunt neque nulla ut odio. In lacinia justo ut lacinia fringilla.',
-		nextButton: 'Take new cards',
-		makeCardButton: 'make card',
-		warningInfo: 'yo its important info!',
-		cardInfoHeader: 'some card thingy',
-		cardInfoHL: 'bold text',
-		cardInfoNormal: 'heyy regular text',
+			'현재 "절제" 카드는 주변과 타협하고 안정감을 가지려 하는 긍정적인 의미가 있습니다. 어쩌면 당신의 주별에 이상적인 인연이 기다리고 있을 수도 있습니다. 과거 "은둔자" 카드에서 부정적으로 해석 됐던 주변 인간관계를 다시 원만히 풀어갈 기회가 지금 당신의 행동에 달려있습니다. 미래 "정의" 카드는 멀지 않은 미래에 인간 관계 정리에서 고민하는 상황을 예견합니다. 어떤 상황이 다가오던지 옳은 선택을 하도록 대비할 필요성이 있습니다.',
+		nextButton: '다른 운세 보러가기',
+		makeCardButton: '행운카드 만들기',
+		warningInfo:
+			'당신의 총운을 기반으로 행운카드에서 운세를 보완해줄 수 있는 개체를 추천합니다.',
+		cardInfoHeader: '헹운카드 추천 개체',
+		cardInfoHL: '안 좋은 인연을',
+		cardInfoNormal: '해결할 수 있는 개체',
 	},
 }

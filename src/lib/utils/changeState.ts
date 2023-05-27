@@ -48,7 +48,7 @@ export const viewIntroState = () => {
 export const viewSelectionState = () => {
 	stateHistory.push(get(viewState))
 	viewState.set('selection')
-	showNav.set(false)
+	showNav.set(true)
 	description.set('')
 	indicators.set([])
 	roadmapData.set(null)

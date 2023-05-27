@@ -74,7 +74,7 @@ export const allScenes: Scene[] = [
 		points: [
 			{
 				id: 1,
-				name: '과거 - 운돌자',
+				name: '과거 - 운둔자',
 				description: 'Test description',
 				left: 40,
 				top: 50,
@@ -138,7 +138,7 @@ export const allScenes: Scene[] = [
 		points: [
 			{
 				id: 1,
-				name: '과거 - 운돌자',
+				name: '과거 - 운듄자',
 				description: 'Test description',
 				left: 40,
 				top: 50,

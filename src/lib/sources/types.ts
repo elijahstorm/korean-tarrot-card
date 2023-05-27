@@ -3,11 +3,15 @@ type Card = {
 	title: string
 	info: string
 	image: string
-	item: {
-		info: string
-		name: string
-		image: string
-	}
+	smallImage: string
+	items: [number, number, number]
+}
+
+type Item = {
+	id: number
+	name: string
+	info: string
+	image: string
 }
 
 type Prediction = {

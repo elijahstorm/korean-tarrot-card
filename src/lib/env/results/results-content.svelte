@@ -1,9 +1,25 @@
-<script>
+<script lang="ts">
 	import { viewCardsState, viewCustomizeState } from '$lib/utils/changeState'
 	import { Lang } from '$lib/sources/lang'
 	import { fly } from 'svelte/transition'
 	import { predictionState, selectedCardsState } from '$lib/stores/state'
 	import { allPredictions } from '$lib/sources/predictionData'
+	import { allItems } from '$lib/sources/itemData'
+
+	const memoize = <A extends object, B>(func: (obj: A) => B): ((obj: A) => B) => {
+		const memo = new WeakMap()
+
+		return (obj: A): B => {
+			if (!memo.has(obj)) {
+				memo.set(obj, func(obj))
+			}
+			return memo.get(obj)
+		}
+	}
+
+	const item = memoize(
+		(card: Card): Item => allItems.find((item) => item.id === card.items[0]) ?? allItems[0]
+	)
 </script>
 
 <div class="flex flex-col gap-8 h-full">
@@ -22,7 +38,7 @@
 						/>
 					</div>
 
-					<img src={card.image} alt={card.title} />
+					<img src={card.smallImage} alt={card.title} />
 				</div>
 			{/each}
 		</div>
@@ -63,19 +79,19 @@
 						<div class="flex flex-col gap-2">
 							<div class="bg-zinc-700 rounded-md border border-zinc-600 p-2">
 								<img
-									src={card.item.image}
-									alt={card.item.name}
+									src={item(card).image}
+									alt={item(card).name}
 									class="aspect-1 w-16"
 								/>
 							</div>
 
 							<p class="text-center">
 								<span class="text-zinc-400 text-xs">
-									{card.item.info}
+									{item(card).info}
 								</span>
 
 								<span class="text-sm">
-									{card.item.name}
+									{item(card).name}
 								</span>
 							</p>
 						</div>
