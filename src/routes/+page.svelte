@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import ClickIndicators from '$lib/comp/click-indicators.svelte'
 	import Description from '$lib/comp/description.svelte'
 	import Nav from '$lib/comp/nav.svelte'
@@ -6,7 +6,6 @@
 	import IntroScene from '$lib/env/intro/intro-scene.svelte'
 	import EndScene from '$lib/env/end/end-scene.svelte'
 	import PredictionScene from '$lib/env/prediction/prediction-scene.svelte'
-	import World from '$lib/env/world.svelte'
 	import { viewState } from '$lib/stores/state'
 	import CardsScene from '$lib/env/cards/cards-scene.svelte'
 	import ResultsScene from '$lib/env/results/results-scene.svelte'
@@ -27,7 +26,7 @@
 		{ state: 'intro', component: IntroContent, scene: IntroScene },
 		{ state: 'selection', component: SelectionContent, scene: SelectionScene },
 		{ state: 'cards', component: CardsContent, scene: CardsScene },
-		{ state: 'scene', component: PredictionContent, scene: PredictionScene },
+		{ state: 'scene', component: PredictionContent, scene: PredictionScene, canvas: true },
 		{ state: 'results', component: ResultsContent, scene: ResultsScene },
 		{ state: 'customize', component: CustomizeContent, scene: CustomizeScene },
 		{ state: 'end', component: EndContent, scene: EndScene },
@@ -36,7 +35,7 @@
 	onMount(() => viewIntroState())
 </script>
 
-<World>
+<div class="absolute inset-0">
 	{#each viewComponents as { state, scene }}
 		{#if $viewState === state}
 			{#key state}
@@ -44,12 +43,9 @@
 			{/key}
 		{/if}
 	{/each}
-</World>
+</div>
 
-<section
-	class="py-8 px-4 sm:px-8 grid grid-rows-layout absolute inset-0 overflow-hidden"
-	class:bg-black={true}
->
+<section class="py-8 px-4 sm:px-8 grid grid-rows-layout absolute inset-0 overflow-hidden">
 	<header class="justify-self-start">
 		<Nav />
 	</header>

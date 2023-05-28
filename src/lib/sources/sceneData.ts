@@ -3,7 +3,7 @@ export const allScenes: Scene[] = [
 		id: 0,
 		objects: [
 			{
-				url: '/models/test.gltf',
+				url: '/models/threlte.glb',
 				interactive: false,
 			},
 		],
@@ -32,7 +32,7 @@ export const allScenes: Scene[] = [
 		id: 1,
 		objects: [
 			{
-				url: '/models/test.gltf',
+				url: '/models/threlte.glb',
 				interactive: false,
 			},
 		],
@@ -61,7 +61,7 @@ export const allScenes: Scene[] = [
 		id: 2,
 		objects: [
 			{
-				url: '/models/test.gltf',
+				url: '/models/threlte.glb',
 				interactive: false,
 			},
 		],
@@ -90,7 +90,7 @@ export const allScenes: Scene[] = [
 		id: 3,
 		objects: [
 			{
-				url: '/models/test.gltf',
+				url: '/models/threlte.glb',
 				interactive: false,
 			},
 		],
@@ -119,7 +119,7 @@ export const allScenes: Scene[] = [
 		id: 4,
 		objects: [
 			{
-				url: '/models/test.gltf',
+				url: '/models/threlte.glb',
 				interactive: false,
 			},
 		],
@@ -148,7 +148,7 @@ export const allScenes: Scene[] = [
 		id: 5,
 		objects: [
 			{
-				url: '/models/test.gltf',
+				url: '/models/threlte.glb',
 				interactive: false,
 			},
 		],
