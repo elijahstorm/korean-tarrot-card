@@ -3,6 +3,7 @@ import {
 	description,
 	indicators,
 	roadmapData,
+	seenCardsState,
 	showNav,
 	stateHistory,
 	viewState,
@@ -70,6 +71,7 @@ export const viewCardsState = addToHistory(() => {
 	description.set('')
 	indicators.set([])
 	roadmapData.set(null)
+	seenCardsState.set([])
 })
 
 export const viewSceneState = addToHistory(() => {

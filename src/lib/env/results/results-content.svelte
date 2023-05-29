@@ -101,7 +101,7 @@
 
 			<div class="flex">
 				<p
-					class="aspect-1 w-5 pl-2 mr-1 rounded-full bg-zinc-700 text-white text-sm scale-75 font-maruburi rotate-12"
+					class="h-5 w-5 pl-2 mr-1 rounded-full bg-zinc-700 text-white text-sm scale-75 font-maruburi rotate-12"
 				>
 					i
 				</p>
