@@ -1,176 +1,29 @@
-export const allScenes: Scene[] = [
-	{
-		id: 0,
-		objects: [
-			{
-				url: '/models/threlte.glb',
-				interactive: false,
-			},
-		],
-		points: [
-			{
-				id: 1,
-				description: 'Test description',
-				left: 40,
-				top: 50,
-			},
-			{
-				id: 2,
-				description: 'Test 3',
-				left: 50,
-				top: 20,
-			},
-			{
-				id: 3,
-				description: 'safs description',
-				left: 30,
-				top: 60,
-			},
-		],
-	},
-	{
-		id: 1,
-		objects: [
-			{
-				url: '/models/threlte.glb',
-				interactive: false,
-			},
-		],
-		points: [
-			{
-				id: 1,
-				description: 'Test description',
-				left: 67,
-				top: 36,
-			},
-			{
-				id: 2,
-				description: 'Test 3',
-				left: 74,
-				top: 65,
-			},
-			{
-				id: 3,
-				description: 'safs description',
-				left: 54,
-				top: 44,
-			},
-		],
-	},
-	{
-		id: 2,
-		objects: [
-			{
-				url: '/models/threlte.glb',
-				interactive: false,
-			},
-		],
-		points: [
-			{
-				id: 1,
-				description: 'Test description',
-				left: 40,
-				top: 50,
-			},
-			{
-				id: 2,
-				description: 'Test 3',
-				left: 50,
-				top: 20,
-			},
-			{
-				id: 3,
-				description: 'safs description',
-				left: 30,
-				top: 60,
-			},
-		],
-	},
-	{
-		id: 3,
-		objects: [
-			{
-				url: '/models/threlte.glb',
-				interactive: false,
-			},
-		],
-		points: [
-			{
-				id: 1,
-				description: 'Test description',
-				left: 67,
-				top: 36,
-			},
-			{
-				id: 2,
-				description: 'Test 3',
-				left: 74,
-				top: 65,
-			},
-			{
-				id: 3,
-				description: 'safs description',
-				left: 54,
-				top: 44,
-			},
-		],
-	},
-	{
-		id: 4,
-		objects: [
-			{
-				url: '/models/threlte.glb',
-				interactive: false,
-			},
-		],
-		points: [
-			{
-				id: 1,
-				description: 'Test description',
-				left: 40,
-				top: 50,
-			},
-			{
-				id: 2,
-				description: 'Test 3',
-				left: 50,
-				top: 20,
-			},
-			{
-				id: 3,
-				description: 'safs description',
-				left: 30,
-				top: 60,
-			},
-		],
-	},
-	{
-		id: 5,
-		objects: [
-			{
-				url: '/models/threlte.glb',
-				interactive: false,
-			},
-		],
-		points: [
-			{
-				id: 1,
-				description: 'Test description',
-				left: 67,
-				top: 36,
-			},
-			{
-				id: 2,
-				description: 'Test 3',
-				left: 74,
-				top: 65,
-			},
-			{
-				id: 3,
-				description: 'safs description',
-				left: 54,
-				top: 44,
-			},
-		],
-	},
-]
+const pollRandomPosition = () => Math.round(Math.random() * 50 + 20)
+
+const getRandomLoremIpsumSpan = () => {
+	const loremIpsumText =
+		'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum'
+
+	const loremIpsumWords = loremIpsumText.split(' ')
+	const numWords = loremIpsumWords.length
+
+	const randomIndex = Math.floor(Math.random() * (numWords - 2)) // Generate a random index
+
+	return loremIpsumWords.slice(randomIndex, randomIndex + 3).join(' ')
+}
+
+export const allScenes: Scene[] = new Array(6).fill({}).map((_, id) => ({
+	id,
+	objects: [
+		{
+			url: '/models/body2.glb',
+			interactive: false,
+		},
+	],
+	points: new Array(3).fill({}).map((_, index) => ({
+		id: index + 1,
+		description: getRandomLoremIpsumSpan(),
+		left: pollRandomPosition(),
+		top: pollRandomPosition(),
+	})),
+})) as Scene[]

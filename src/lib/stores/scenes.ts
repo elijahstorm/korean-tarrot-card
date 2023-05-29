@@ -1,5 +1,5 @@
 import { allScenes } from '$lib/sources/sceneData'
-import { get, writable } from 'svelte/store'
+import { get, writable, type Writable } from 'svelte/store'
 import {
 	selectedCardsState,
 	type Indicator,
@@ -57,12 +57,12 @@ export const resetSceneList = () => {
 	scenes.set(shuffleArray([...allScenes]))
 }
 
-const getFromData = <T extends { id: number }>(dataSource: T[]) =>
-	dataSource.find((data) => data.id === get(predictionState)) ?? dataSource[0]
+const getFromData = <T extends { id: number }>(dataSource: T[], currentState: Writable<number>) =>
+	dataSource.find((data) => data.id === get(currentState)) ?? dataSource[0]
 
-export const getCurrentPredictionData = () => getFromData(allPredictions)
+export const getCurrentPredictionData = () => getFromData(allPredictions, predictionState)
 
-export const getCurrentSceneData = () => getFromData(allScenes)
+export const getCurrentSceneData = () => getFromData(allScenes, currentDisplayedScene)
 
 export const activateSceneState = (id: number) => {
 	roadmapData.update((data) =>
@@ -85,4 +85,5 @@ export const changeScene = (id: number) => {
 
 	indicators.set(indicator)
 	roadmapData.set(roadmap)
+	description.set('')
 }
