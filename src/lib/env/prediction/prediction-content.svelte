@@ -28,10 +28,10 @@
 		<div in:fly class="flex gap-8 pr-8">
 			<button
 				on:click={viewSceneState}
-				class="p-2 aspect-1 rounded-full border border-zinc-500 hover:bg-zinc-700"
+				class="rounded-full border border-zinc-500 hover:bg-zinc-700 overflow-clip h-12 w-12"
 				type="button"
 			>
-				rep.
+				<img src="nav/repeat.png" alt="repeat" style="object-position: -0.1px 0" />
 			</button>
 
 			{#if [...new Set($seenCardsState)].length >= 3}
