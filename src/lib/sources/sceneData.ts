@@ -1,3 +1,6 @@
+import { allCards } from './cardData'
+import { allItems } from './itemData'
+
 const pollRandomPosition = () => Math.round(Math.random() * 50 + 20)
 
 const getRandomLoremIpsumSpan = () => {

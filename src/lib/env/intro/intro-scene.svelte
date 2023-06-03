@@ -1,2 +1,5 @@
-<!-- <img src="cards/behind.png" alt="bg" /> -->
-<div class="w-full h-full bg-black" />
+<script lang="ts">
+	import BgVideo from '$lib/comp/bg-video.svelte'
+</script>
+
+<BgVideo cover src="backgrounds/intro.mp4" />
