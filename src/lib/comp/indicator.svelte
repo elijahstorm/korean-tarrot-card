@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition'
 	import { activateSceneState } from '../stores/scenes'
+	import { showCardDisplay } from '$lib/stores/state'
 
 	export let left = 50
 	export let top = 50

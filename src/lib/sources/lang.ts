@@ -6,6 +6,7 @@ export const Lang = {
 	endTitle: 'END',
 	timelineNames: ['과거', '현재', '미래'],
 	scene: {
+		startSceenInstructions: '카드를 클릭해 공간으로 운세를 확인하세요.',
 		nextScreenButton: '다음 카드 해석 보기',
 		gotoResults: '총 운 해석 보기',
 	},

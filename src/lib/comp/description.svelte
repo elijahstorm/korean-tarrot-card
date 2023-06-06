@@ -4,7 +4,7 @@
 </script>
 
 {#if $description}
-	<p in:fly out:fly class="select-none text-white">
+	<p in:fly out:fly class="select-none text-white opacity-70">
 		{$description}
 	</p>
 {/if}

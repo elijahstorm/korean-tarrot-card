@@ -54,7 +54,7 @@
 		<Roadmap />
 	</section>
 
-	<main class="col-span-2 justify-self-center self-center w-full h-full text-white">
+	<main class="relative col-span-2 justify-self-center self-center w-full h-full text-white">
 		{#each viewComponents as { state, component }}
 			{#if $viewState === state}
 				{#key state}

@@ -3,7 +3,7 @@
 	import Indicator from './indicator.svelte'
 </script>
 
-{#if $showCardDisplay}
+{#if !$showCardDisplay}
 	{#each $indicators as indicator}
 		{#if !$roadmapData?.seenItems.includes(indicator.id)}
 			<Indicator id={indicator.id} left={indicator.left} top={indicator.top} />

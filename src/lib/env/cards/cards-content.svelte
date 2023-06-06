@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { base } from '$app/paths'
 	import { Lang } from '$lib/sources/lang'
-	import { selectedCardsState, viewState } from '$lib/stores/state'
+	import { selectedCardsState, showCardDisplay, viewState } from '$lib/stores/state'
 	import { viewSceneState } from '$lib/utils/changeState'
+	import { pipe } from '$lib/utils/fp-ts'
 	import { afterUpdate, onMount } from 'svelte'
 	import { get } from 'svelte/store'
 	import { fade, fly } from 'svelte/transition'
@@ -60,7 +61,7 @@
 			setTimeout(() => (revealCards = true), duration * 2)
 			setTimeout(() => (zoom = true), duration * 3)
 			setTimeout(() => (cards = slots = []), duration * 5)
-			setTimeout(() => viewSceneState(), duration * 6)
+			setTimeout(() => pipe(showCardDisplay.set(true), () => viewSceneState()), duration * 6)
 			return
 		}
 	}
@@ -149,7 +150,7 @@
 						/>
 
 						<img
-							class="col-start-1 row-start-1 transition-all dur"
+							class="col-start-1 row-start-1 transition-all"
 							class:scale-x-100={revealCards}
 							class:scale-x-0={!revealCards}
 							src={base +

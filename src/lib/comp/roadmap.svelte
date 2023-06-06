@@ -27,12 +27,12 @@
 				{#each $selectedCardsState as card, index (card.id)}
 					<div class="grid group">
 						<div
-							class="col-start-1 row-start-1 bg-gradient-to-r from-stone-900 via-stone-500 to-stone-900 opacity-0 transition-opacity"
-							class:opacity-90={card.id === $currentDisplayedScene}
+							class="col-start-1 row-start-1 blur-[2px] bg-gradient-to-r from-stone-900 via-stone-500 to-stone-900 opacity-0 transition-opacity"
+							class:opacity-100={card.id === $currentDisplayedScene}
 						/>
 
 						<div
-							class="col-start-1 row-start-1 bg-gradient-to-r from-stone-900 via-stone-500 to-stone-500 transition-opacity opacity-0 group-hover:opacity-90"
+							class="col-start-1 row-start-1 blur-[2px] bg-gradient-to-r from-stone-900 via-stone-500 to-stone-500 transition-opacity opacity-0 group-hover:opacity-90"
 						/>
 
 						<button

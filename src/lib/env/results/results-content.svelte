@@ -102,12 +102,12 @@
 
 			<div class="flex">
 				<p
-					class="h-5 w-5 pl-2 mr-1 rounded-full bg-zinc-700 text-white text-sm scale-75 font-maruburi rotate-12"
+					class="min-h-[19.5px] min-w-[19.5px] h-[19.5px] w-[19.5px] pl-2 mr-1 rounded-full select-none bg-zinc-700 text-white text-sm scale-75 font-maruburi rotate-12"
 				>
 					i
 				</p>
 
-				<p class="text-zinc-600 text-xs">
+				<p class="text-zinc-600 text-xs pt-0.5">
 					{Lang.results.warningInfo}
 				</p>
 			</div>
