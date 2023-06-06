@@ -8,7 +8,13 @@ const config = {
 	preprocess: seqPreprocessor([vitePreprocess(), preprocessThrelte()]),
 
 	kit: {
-		adapter: adapter(),
+		adapter: adapter({
+			pages: 'docs',
+			assets: 'docs',
+			hostineSite: 'data',
+			precompress: false,
+			fallback: 'index.html',
+		}),
 	},
 }
 
