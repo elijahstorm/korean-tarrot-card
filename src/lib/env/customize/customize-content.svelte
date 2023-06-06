@@ -1,15 +1,27 @@
 <script lang="ts">
 	import { selectedAttribute } from './customize'
 	import CustomizeBg from './customize-bg.svelte'
+	import CustomizeBorder from './customize-border.svelte'
+	import CustomizeObject from './customize-object.svelte'
+	import CustomizePerson from './customize-person.svelte'
 
 	const categories = [
-		{ name: '배경', component: CustomizeBg },
 		{
-			name: '프레임',
+			name: '배경',
 			component: CustomizeBg,
 		},
-		{ name: '캐릭터', component: CustomizeBg },
-		{ name: '오브젝트', component: CustomizeBg },
+		{
+			name: '프레임',
+			component: CustomizeBorder,
+		},
+		{
+			name: '캐릭터',
+			component: CustomizePerson,
+		},
+		{
+			name: '오브젝트',
+			component: CustomizeObject,
+		},
 	]
 
 	let selectedCategory = 0
