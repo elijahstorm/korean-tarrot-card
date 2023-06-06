@@ -5,6 +5,7 @@
 	import { predictionState, selectedCardsState } from '$lib/stores/state'
 	import { allPredictions } from '$lib/sources/predictionData'
 	import { allItems } from '$lib/sources/itemData'
+	import { base } from '$app/paths'
 
 	const memoize = <A extends object, B>(func: (obj: A) => B): ((obj: A) => B) => {
 		const memo = new WeakMap()
@@ -38,7 +39,7 @@
 						/>
 					</div>
 
-					<img src={`cards/small/${card.fileName}.png`} alt={card.title} />
+					<img src={base + '/' + `cards/small/${card.fileName}.png`} alt={card.title} />
 				</div>
 			{/each}
 		</div>
@@ -79,7 +80,7 @@
 						<div class="flex flex-col gap-2">
 							<div class="bg-zinc-700 rounded-md border border-zinc-600 p-2">
 								<img
-									src={`items/${item(card).fileName}.png`}
+									src={base + '/' + `items/${item(card).fileName}.png`}
 									alt={item(card).name}
 									class="aspect-1 w-16"
 								/>

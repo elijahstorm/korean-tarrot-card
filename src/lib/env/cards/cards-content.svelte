@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { base } from '$app/paths'
 	import { Lang } from '$lib/sources/lang'
 	import { selectedCardsState, viewState } from '$lib/stores/state'
 	import { viewSceneState } from '$lib/utils/changeState'
@@ -107,7 +108,7 @@
 								class:hidden={card.selected}
 								style={cardRotation(card)}
 							>
-								<img src="cards/behind.png" alt="card background" />
+								<img src="{base}/cards/behind.png" alt="card background" />
 							</button>
 						{/if}
 					</div>
@@ -141,7 +142,7 @@
 							class="col-start-1 row-start-1 transition-all"
 							class:scale-x-0={revealCards}
 							class:scale-x-100={!revealCards}
-							src="cards/behind.png"
+							src="{base}/cards/behind.png"
 							alt="card background"
 							style="transition-duration: {duration /
 								4}ms; transition-delay: {(index * duration) / 4}ms"
@@ -151,9 +152,10 @@
 							class="col-start-1 row-start-1 transition-all dur"
 							class:scale-x-100={revealCards}
 							class:scale-x-0={!revealCards}
-							src={`cards/${zoom ? '' : 'small/'}${
-								$selectedCardsState[index].fileName
-							}.png`}
+							src={base +
+								`cards/${zoom ? '' : 'small/'}${
+									$selectedCardsState[index].fileName
+								}.png`}
 							alt={$selectedCardsState[index].title}
 							style="transition-duration: {duration / 4}ms; transition-delay: {((1 +
 								index) *

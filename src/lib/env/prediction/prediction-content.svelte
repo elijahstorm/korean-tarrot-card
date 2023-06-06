@@ -11,6 +11,7 @@
 	import { fly } from 'svelte/transition'
 	import { get } from 'svelte/store'
 	import { changeScene } from '$lib/stores/scenes'
+	import { base } from '$app/paths'
 
 	const nextCardScene = () =>
 		changeScene(
@@ -33,7 +34,11 @@
 					class="rounded-full border border-zinc-500 hover:bg-zinc-700 overflow-clip h-12 w-12"
 					type="button"
 				>
-					<img src="nav/repeat.png" alt="repeat" style="object-position: -0.1px 0" />
+					<img
+						src="{base}/nav/repeat.png"
+						alt="repeat"
+						style="object-position: -0.1px 0"
+					/>
 				</button>
 
 				{#if [...new Set($seenCardsState)].length >= 3}

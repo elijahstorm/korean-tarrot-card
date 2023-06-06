@@ -33,7 +33,6 @@
 			</div>
 
 			<div class="h-1/2" />
-			<!-- <img src="cards/behind.png" alt={prediction.title} /> -->
 		</button>
 	{/each}
 </div>

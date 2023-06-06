@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { browser } from '$app/environment'
+	import { base } from '$app/paths'
 
 	export let src: string
 	export let cover = false
@@ -18,7 +19,7 @@
 	<video
 		autoplay
 		muted
-		{src}
+		src={base + '/' + src}
 		class="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2"
 		class:object-cover={cover}
 		bind:currentTime={time}
