@@ -6,14 +6,7 @@ const config = {
 	preprocess: vitePreprocess(),
 
 	kit: {
-		outDir: 'docs',
-		adapter: adapter({}),
-		paths: {
-			base: '/korean-tarrot-card',
-		},
-		// prerender: {
-		// 	handleHttpError
-		// }
+		adapter: adapter(),
 	},
 }
 
