@@ -8,6 +8,7 @@ const config = {
 	preprocess: seqPreprocessor([vitePreprocess(), preprocessThrelte()]),
 
 	kit: {
+		outDir: 'docs',
 		adapter: adapter({
 			pages: 'docs',
 			assets: 'docs',
