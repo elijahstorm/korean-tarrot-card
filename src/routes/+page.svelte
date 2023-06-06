@@ -26,7 +26,7 @@
 		{ state: 'intro', component: IntroContent, scene: IntroScene },
 		{ state: 'selection', component: SelectionContent, scene: SelectionScene },
 		{ state: 'cards', component: CardsContent, scene: CardsScene },
-		{ state: 'scene', component: PredictionContent, scene: PredictionScene, canvas: true },
+		{ state: 'scene', component: PredictionContent, scene: PredictionScene },
 		{ state: 'results', component: ResultsContent, scene: ResultsScene },
 		{ state: 'customize', component: CustomizeContent, scene: CustomizeScene },
 		{ state: 'end', component: EndContent, scene: EndScene },

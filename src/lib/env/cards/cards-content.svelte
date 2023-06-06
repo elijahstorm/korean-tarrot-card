@@ -81,8 +81,8 @@
 
 <svelte:head>
 	{#each $selectedCardsState as card}
-		<link rel="preload" as="image" href={card.smallImage} />
-		<link rel="preload" as="image" href={card.image} />
+		<link rel="preload" as="image" href={`cards/${card.fileName}.png`} />
+		<link rel="preload" as="image" href={`cards/small/${card.fileName}.png`} />
 	{/each}
 </svelte:head>
 
@@ -151,9 +151,9 @@
 							class="col-start-1 row-start-1 transition-all dur"
 							class:scale-x-100={revealCards}
 							class:scale-x-0={!revealCards}
-							src={zoom
-								? $selectedCardsState[index].image
-								: $selectedCardsState[index].smallImage}
+							src={`cards/${zoom ? '' : 'small/'}${
+								$selectedCardsState[index].fileName
+							}.png`}
 							alt={$selectedCardsState[index].title}
 							style="transition-duration: {duration / 4}ms; transition-delay: {((1 +
 								index) *

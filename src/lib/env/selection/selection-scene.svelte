@@ -11,8 +11,8 @@
 	/>
 </div>
 
-{#if $videoState === ''}
-	<BgVideo src="backgrounds/selection/whole-animation.mp4" />
-{:else}
+<BgVideo src="backgrounds/selection/whole-animation.mp4" />
+
+{#if $videoState !== ''}
 	<BgVideo src="backgrounds/selection/{$videoState}.mp4" />
 {/if}

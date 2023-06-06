@@ -31,14 +31,14 @@
 					class="flex-1 flex flex-col gap-4 justify-center"
 				>
 					<div>
-						<h5 class="text-center font-maruburi">{card.title}</h5>
+						<h5 class="text-center font-maruburi">{Lang.timelineNames[index]}</h5>
 
 						<div
 							class="mx-8 h-0.5 bg-gradient-to-r from-transparent via-white to-transparent"
 						/>
 					</div>
 
-					<img src={card.smallImage} alt={card.title} />
+					<img src={`cards/small/${card.fileName}.png`} alt={card.title} />
 				</div>
 			{/each}
 		</div>
@@ -79,7 +79,7 @@
 						<div class="flex flex-col gap-2">
 							<div class="bg-zinc-700 rounded-md border border-zinc-600 p-2">
 								<img
-									src={item(card).image}
+									src={`items/${item(card).fileName}.png`}
 									alt={item(card).name}
 									class="aspect-1 w-16"
 								/>

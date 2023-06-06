@@ -33,6 +33,8 @@ export const currentDisplayedScene = writable<number>(0)
 
 export const viewState = writable<StateViews>('intro')
 
+export const showCardDisplay = writable(true)
+
 export const showNav = writable(false)
 
 export const description = writable('')

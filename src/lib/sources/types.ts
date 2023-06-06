@@ -2,8 +2,8 @@ type Card = {
 	id: number
 	title: string
 	info: string
-	image: string
-	smallImage: string
+	description: string
+	fileName: string
 	items: [number, number, number]
 }
 
@@ -11,7 +11,7 @@ type Item = {
 	id: number
 	name: string
 	info: string
-	image: string
+	fileName: string
 }
 
 type Prediction = {
