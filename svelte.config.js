@@ -3,8 +3,6 @@ import { vitePreprocess } from '@sveltejs/kit/vite'
 import seqPreprocessor from 'svelte-sequential-preprocessor'
 import { preprocessThrelte } from '@threlte/preprocess'
 
-const dev = process.env.NODE_ENV === 'development'
-
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	preprocess: seqPreprocessor([vitePreprocess(), preprocessThrelte()]),
@@ -18,8 +16,11 @@ const config = {
 			fallback: 'index.html',
 		}),
 		paths: {
-			base: dev ? '' : '/korean-tarrot-card',
+			base: '/korean-tarrot-card',
 		},
+		// prerender: {
+		// 	handleHttpError
+		// }
 	},
 }
 
