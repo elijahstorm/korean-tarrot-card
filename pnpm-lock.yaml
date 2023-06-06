@@ -8,11 +8,6 @@ specifiers:
   '@tailwindcss/forms': ^0.5.3
   '@theatre/core': ^0.6.1
   '@theatre/studio': ^0.6.1
-  '@threlte/core': ^5.0.9
-  '@threlte/extras': ^4.9.3
-  '@threlte/preprocess': ^0.0.2
-  '@threlte/rapier': ^0.5.0
-  '@threlte/theatre': ^0.0.2
   '@types/three': ^0.152.1
   '@typescript-eslint/eslint-plugin': ^5.59.9
   '@typescript-eslint/parser': ^5.59.9
@@ -22,7 +17,6 @@ specifiers:
   eslint-plugin-svelte: ^2.30.0
   fp-ts: ^2.16.0
   postcss: ^8.4.24
-  postprocessing: ^6.31.0
   prettier: ^2.8.8
   prettier-plugin-svelte: ^2.10.1
   svelte: ^3.59.1
@@ -32,7 +26,6 @@ specifiers:
   svelte-preprocess: ^5.0.4
   svelte-sequential-preprocessor: ^1.0.0
   tailwindcss: ^3.3.2
-  three: 0.153.0
   tslib: ^2.5.3
   typescript: ^5.1.3
   vite: ^4.3.9
@@ -45,11 +38,6 @@ devDependencies:
   '@tailwindcss/forms': 0.5.3_tailwindcss@3.3.2
   '@theatre/core': 0.6.1
   '@theatre/studio': 0.6.1_@theatre+core@0.6.1
-  '@threlte/core': 5.0.9
-  '@threlte/extras': 4.9.3_three@0.153.0
-  '@threlte/preprocess': 0.0.2
-  '@threlte/rapier': 0.5.0
-  '@threlte/theatre': 0.0.2
   '@types/three': 0.152.1
   '@typescript-eslint/eslint-plugin': 5.59.9_3cembfv4vokiyn6g4ljynjc5d4
   '@typescript-eslint/parser': 5.59.9_tizxnkcvjrb4cldxgwq5h3lj5u
@@ -59,7 +47,6 @@ devDependencies:
   eslint-plugin-svelte: 2.30.0_3vji2slnup2yzxo42w6sbds3sy
   fp-ts: 2.16.0
   postcss: 8.4.24
-  postprocessing: 6.31.0_three@0.153.0
   prettier: 2.8.8
   prettier-plugin-svelte: 2.10.1_blbg2s7pis747igzn3ilcyh5ou
   svelte: 3.59.1
@@ -69,7 +56,6 @@ devDependencies:
   svelte-preprocess: 5.0.4_jissygmktegc5gmmkgli52p73q
   svelte-sequential-preprocessor: 1.0.0
   tailwindcss: 3.3.2
-  three: 0.153.0
   tslib: 2.5.3
   typescript: 5.1.3
   vite: 4.3.9
@@ -509,30 +495,6 @@ packages:
       '@theatre/dataverse': 0.6.1
     dev: true
 
-  /@threlte/core/5.0.9:
-    resolution: {integrity: sha512-3u8SGLD/fzOh0sEf1MDa0FVpp7oLqdEUR8nvGEkWZvGDwKUlhe0XxSmXNzvAYwCSnNLsYYfwiAWy8wBrVkoRlg==}
-    dev: true
-
-  /@threlte/extras/4.9.3_three@0.153.0:
-    resolution: {integrity: sha512-1XVa9a3C+EQE9vMCZopZ2oZGncDlk/Claz+voFCTZvUqJl0xpPWBQTPNM6V61nXu8k5t+JKSGam3TWygBnfxug==}
-    dependencies:
-      troika-three-text: 0.46.4_three@0.153.0
-    transitivePeerDependencies:
-      - three
-    dev: true
-
-  /@threlte/preprocess/0.0.2:
-    resolution: {integrity: sha512-Eb3u3nAEBSFpadQvCdeZKy0xE4kgnlmxeTxnzTsmvUJt5ZEadbMg1+/LXn0oAYgFO72YQ62CJ7WI4hmoQSpOeA==}
-    dev: true
-
-  /@threlte/rapier/0.5.0:
-    resolution: {integrity: sha512-+lZ24lPdKLyXZA4iQvRl8prpQF9ARRaETm1EtkRCZSZm8NjSNKcpD6Gk5hCsI0PQbzCavY2FOrSvCPUbBuQgTA==}
-    dev: true
-
-  /@threlte/theatre/0.0.2:
-    resolution: {integrity: sha512-Pu8wwEOmzJ3Dqs1h2SeEUQG3lyg4M3ppRj/TGONijTSAchprfY4kTXBI1hZz1k6mn2c2FNY13HsiAjwQJnMWug==}
-    dev: true
-
   /@tweenjs/tween.js/18.6.4:
     resolution: {integrity: sha512-lB9lMjuqjtuJrx7/kOkqQBtllspPIN+96OvTCeJ2j5FEzinoAXTdAMFnDAQT1KVPRlnYfBrqxtqP66vDM40xxQ==}
     dev: true
@@ -779,12 +741,6 @@ packages:
 
   /balanced-match/1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
-    dev: true
-
-  /bidi-js/1.0.2:
-    resolution: {integrity: sha512-rzSy/k7WdX5zOyeHHCOixGXbCHkyogkxPKL2r8QtzHmVQDiWCXUWa18bLdMWT9CYMLOYTjWpTHawuev2ouYJVw==}
-    dependencies:
-      require-from-string: 2.0.2
     dev: true
 
   /binary-extensions/2.2.0:
@@ -1767,15 +1723,6 @@ packages:
       source-map-js: 1.0.2
     dev: true
 
-  /postprocessing/6.31.0_three@0.153.0:
-    resolution: {integrity: sha512-h1g2KDVrTS6QB4AHP55opp8FYzq66jJHh4JIFCptaj283RUX1y/tPkv8FBB2oK4WYrdPgqvElnKrXZwgiLWeHQ==}
-    engines: {node: '>= 0.13.2'}
-    peerDependencies:
-      three: '>= 0.138.0 < 0.153.0'
-    dependencies:
-      three: 0.153.0
-    dev: true
-
   /prelude-ls/1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
@@ -1817,11 +1764,6 @@ packages:
     engines: {node: '>=8.10.0'}
     dependencies:
       picomatch: 2.3.1
-    dev: true
-
-  /require-from-string/2.0.2:
-    resolution: {integrity: sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==}
-    engines: {node: '>=0.10.0'}
     dev: true
 
   /resolve-from/4.0.0:
@@ -2159,10 +2101,6 @@ packages:
       any-promise: 1.3.0
     dev: true
 
-  /three/0.153.0:
-    resolution: {integrity: sha512-OCP2/uQR6GcDpSLnJt/3a4mdS0kNWcbfUXIwLoEMgLzEUIVIYsSDwskpmOii/AkDM+BBwrl6+CKgrjX9+E2aWg==}
-    dev: true
-
   /tiny-glob/0.2.9:
     resolution: {integrity: sha512-g/55ssRPUjShh+xkfx9UPDXqhckHEsHr4Vd9zX55oSdGZc/MD0m3sferOkwWtp98bv+kcVfEHtRJgBVJzelrzg==}
     dependencies:
@@ -2180,30 +2118,6 @@ packages:
   /totalist/3.0.1:
     resolution: {integrity: sha512-sf4i37nQ2LBx4m3wB74y+ubopq6W/dIzXg0FDGjsYnZHVa1Da8FH853wlL2gtUhg+xJXjfk3kUZS3BRoQeoQBQ==}
     engines: {node: '>=6'}
-    dev: true
-
-  /troika-three-text/0.46.4_three@0.153.0:
-    resolution: {integrity: sha512-Qsv0HhUKTZgSmAJs5wvO7YlBoJSP9TGPLmrg+K9pbQq4lseQdcevbno/WI38bwJBZ/qS56hvfqEzY0zUEFzDIw==}
-    peerDependencies:
-      three: '>=0.103.0'
-    dependencies:
-      bidi-js: 1.0.2
-      three: 0.153.0
-      troika-three-utils: 0.46.0_three@0.153.0
-      troika-worker-utils: 0.46.0
-      webgl-sdf-generator: 1.1.1
-    dev: true
-
-  /troika-three-utils/0.46.0_three@0.153.0:
-    resolution: {integrity: sha512-llHyrXAcwzr0bpg80GxsIp73N7FuImm4WCrKDJkAqcAsWmE5pfP9+Qzw+oMWK1P/AdHQ79eOrOl9NjyW4aOw0w==}
-    peerDependencies:
-      three: '>=0.103.0'
-    dependencies:
-      three: 0.153.0
-    dev: true
-
-  /troika-worker-utils/0.46.0:
-    resolution: {integrity: sha512-bzOx5f2ZBxkFhXtIvDJlLn2AI3bzCkGVbCndl/2dL5QZrwHEKl45OEIilCxYQQWJG1rEbOD9O80tMjoYjw19OA==}
     dev: true
 
   /ts-interface-checker/0.1.13:
@@ -2315,10 +2229,6 @@ packages:
         optional: true
     dependencies:
       vite: 4.3.9
-    dev: true
-
-  /webgl-sdf-generator/1.1.1:
-    resolution: {integrity: sha512-9Z0JcMTFxeE+b2x1LJTdnaT8rT8aEp7MVxkNwoycNmJWwPdzoXzMh0BjJSh/AEFP+KPYZUli814h8bJZFIZ2jA==}
     dev: true
 
   /which/2.0.2:
