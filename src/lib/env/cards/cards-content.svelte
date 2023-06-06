@@ -153,6 +153,7 @@
 							class:scale-x-100={revealCards}
 							class:scale-x-0={!revealCards}
 							src={base +
+								'/' +
 								`cards/${zoom ? '' : 'small/'}${
 									$selectedCardsState[index].fileName
 								}.png`}
