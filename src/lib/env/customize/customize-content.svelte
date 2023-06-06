@@ -1,86 +1,65 @@
 <script lang="ts">
-	import { fly } from 'svelte/transition'
+	import { selectedAttribute } from './customize'
+	import CustomizeBg from './customize-bg.svelte'
 
-	const attributes = [
+	const categories = [
+		{ name: '배경', component: CustomizeBg },
 		{
-			id: 0,
-			value: 'bg-blue-500',
-			name: 'Blue',
+			name: '프레임',
+			component: CustomizeBg,
 		},
-		{
-			id: 1,
-			value: 'bg-red-500',
-			name: 'Red',
-		},
-		{
-			id: 2,
-			value: 'bg-green-500',
-			name: 'Green',
-		},
-		{
-			id: 3,
-			value: 'bg-yellow-500',
-			name: 'Yellow',
-		},
+		{ name: '캐릭터', component: CustomizeBg },
+		{ name: '오브젝트', component: CustomizeBg },
 	]
 
-	let selectedAttribute = ''
-
-	const selectAttribute = (attribute: string) => () => (selectedAttribute = attribute)
+	let selectedCategory = 0
 </script>
 
-<div class="flex gap-4 pt-8">
-	<div class="flex-1">
+<div class="flex gap-4 pt-8 justify-center w-full">
+	<div style="flex: 2" />
+
+	<div style="flex: 5">
 		<div
-			class="card rounded-[3.5rem] max-h-full p-4 m-4 ring-offset-2 ring-gray-600 ring-offset-black ring-2 ring-opacity-100 {selectedAttribute}"
+			class="card relative rounded-[0.25rem] max-h-full p-4 m-4 ring-offset-2 ring-gray-600 ring-offset-black ring-2 ring-opacity-100 {$selectedAttribute}"
 		/>
 	</div>
 
-	<div class="flex flex-col gap-12 text-xs">
-		<div class="flex gap-4 custom-scrollbar p-1 pb-4">
-			{#each attributes as attribute, index (attribute.id)}
+	<div style="flex: 1" />
+
+	<div class="flex flex-col gap-12 text-xs" style="flex: 8">
+		<div class="flex justify-around">
+			{#each categories as category, index (category)}
 				<button
-					in:fly={{ y: 50, delay: (1 + index) * 100, duration: 200 }}
-					on:click={selectAttribute(attribute.value)}
-					class="btn w-14 h-36 rounded overflow-clip ring-2 ring-offset-2 ring-offset-black {attribute.value}"
-					class:ring-gray-600={selectedAttribute !== attribute.value}
-					class:ring-white={selectedAttribute === attribute.value}
-					type="button"
-				/>
-			{/each}
-		</div>
-
-		<div class="mx-8 h-0.5 bg-gradient-to-r from-transparent via-white to-transparent" />
-
-		<div class="flex gap-4 custom-scrollbar pb-4">
-			{#each attributes as attribute, index (attribute.id)}
-				<div
-					in:fly={{ y: 50, delay: (3 + index) * 100, duration: 200 }}
-					class="octagon aspect-1 w-[6.6rem] transition"
-					class:bg-gray-600={selectedAttribute !== attribute.value}
-					class:bg-white={selectedAttribute === attribute.value}
+					class="relative py-0.5 px-8 group"
+					on:click={() => (selectedCategory = index)}
 				>
-					<div class="octagon aspect-1 w-[6.4rem] bg-black">
-						<button
-							on:click={selectAttribute(attribute.value)}
-							class="btn aspect-1 w-24 octagon px-4 py-2 hover:bg-gray-200 mt-[0.2rem] overflow-clip ring-1 ring-offset-1 ring-gray-400 ring-offset-gray-300 {attribute.value}"
-							type="button"
-						>
-							{attribute.name}
-						</button>
-					</div>
-				</div>
+					<div
+						class="absolute inset-0 opacity-0 transition-opacity bg-gradient-to-r from-transparent via-white to-transparent blur-sm group-hover:opacity-20"
+						class:opacity-40={selectedCategory === index}
+						class:group-hover:opacity-40={selectedCategory === index}
+					/>
+
+					<div
+						class="absolute left-0 -bottom-0 w-full h-[2px] bg-gradient-to-r from-transparent via-white to-transparent opacity-0 transition-opacity group-hover:opacity-20"
+						class:opacity-60={selectedCategory === index}
+						class:group-hover:opacity-60={selectedCategory === index}
+					/>
+
+					<p class="relative text-lg select-none">
+						{category.name}
+					</p>
+				</button>
 			{/each}
 		</div>
-	</div>
-</div>
 
-<style>
-	.octagon {
-		clip-path: polygon(30% 0, 70% 0, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0 70%, 0 30%);
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		border: none;
-	}
-</style>
+		{#each categories as category, index (category)}
+			{#if selectedCategory === index}
+				{#key category.name}
+					<svelte:component this={category.component} />
+				{/key}
+			{/if}
+		{/each}
+	</div>
+
+	<div style="flex: 1" />
+</div>

@@ -3,7 +3,7 @@
 	import BgVideo from '$lib/comp/bg-video.svelte'
 	import { allCards } from '$lib/sources/cardData'
 	import { allItems } from '$lib/sources/itemData'
-	import { quadOut } from 'svelte/easing'
+	import { quadOut, linear } from 'svelte/easing'
 	import { Lang } from '$lib/sources/lang'
 	import {
 		currentDisplayedScene,
@@ -96,7 +96,7 @@
 			/>
 		</div>
 
-		<p class="text-sm mt-4 opacity-30">
+		<p class="text-sm mt-4 opacity-30" in:fade={{ delay: 2200, duration: 600, easing: linear }}>
 			{Lang.scene.startSceenInstructions}
 		</p>
 	</div>

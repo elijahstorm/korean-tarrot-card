@@ -15,7 +15,7 @@
 
 {#if loaded}
 	<div class="h-full flex flex-col">
-		<div class="flex flex-col flex-1 justify-center">
+		<div class="flex flex-col flex-1 justify-center gap-6">
 			<div in:fly={{ y: 100, duration, delay: delay(1) }} class="grid intro-header">
 				<h1
 					class="col-start-1 row-start-1 text-center mb-4 text-5xl font-maruburi blur-sm opacity-70"
@@ -50,6 +50,13 @@
 
 <style>
 	.intro-header {
+		mask-image: gradient(
+			linear,
+			center top,
+			center bottom,
+			from(rgba(0, 0, 0, 1)),
+			to(rgba(0, 0, 0, 0))
+		);
 		-webkit-mask-image: -webkit-gradient(
 			linear,
 			center top,

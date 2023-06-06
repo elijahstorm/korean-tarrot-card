@@ -1,9 +1,16 @@
 <script lang="ts">
 	import { Lang } from '$lib/sources/lang'
 	import { changeScene } from '$lib/stores/scenes'
-	import { currentDisplayedScene, roadmapData, selectedCardsState } from '$lib/stores/state'
+	import {
+		currentDisplayedScene,
+		roadmapData,
+		selectedCardsState,
+		showCardDisplay,
+	} from '$lib/stores/state'
+	import { pipe } from '$lib/utils/fp-ts'
 
-	const changeCurrentTab = (id: number) => () => changeScene(id)
+	const changeCurrentTab = (id: number) => () =>
+		pipe(showCardDisplay.set(true), () => changeScene(id))
 </script>
 
 {#if $roadmapData !== null}

@@ -1,16 +1,24 @@
 <script lang="ts">
+	import { base } from '$app/paths'
 	import { allPredictions } from '$lib/sources/predictionData'
 	import { predictionState } from '$lib/stores/state'
 	import { videoState } from '$lib/stores/video-state'
 	import { viewCardsState } from '$lib/utils/changeState'
+	import { pipe } from '$lib/utils/fp-ts'
 
-	const choose = (id: number) => () => {
-		predictionState.set(id)
-		viewCardsState()
-	}
+	let audio: HTMLAudioElement
+
+	const choose = (id: number) => () =>
+		pipe(
+			setTimeout(() => audio.play(), 0),
+			() => predictionState.set(id),
+			() => viewCardsState()
+		)
 
 	const hover = (prediction: Prediction) => () => videoState.set(`${prediction.id}`)
 </script>
+
+<audio src="{base}/backgrounds/selection/selection.mp3" bind:this={audio} />
 
 <div class="h-full grid grid-cols-2 gap-16 max-w-7xl mx-auto py-12 px-8 sm:px-16 lg:grid-cols-4">
 	{#each allPredictions as prediction}
