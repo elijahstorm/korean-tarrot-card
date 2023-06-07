@@ -2,38 +2,53 @@
 	font-family: 'MaruBuri';
 	font-weight: 700;
 	font-display: swap;
-	src: local('MaruBuri Bold'), url('./otf/MaruBuri-Bold.otf') format('otf'),
-		url('./ttf/MaruBuri-Bold.ttf') format('ttf');
+	src: local('MaruBuri Bold'),
+		url('https://elijahstorm.github.io/korean-tarrot-card/fonts/maruburi/otf/MaruBuri-Bold.otf')
+			format('otf'),
+		url('https://elijahstorm.github.io/korean-tarrot-card/fonts/maruburi/ttf/MaruBuri-Bold.ttf')
+			format('ttf');
 }
 
 @font-face {
 	font-family: 'MaruBuri';
 	font-weight: 600;
 	font-display: swap;
-	src: local('MaruBuri SemiBold'), url('./otf/MaruBuri-SemiBold.otf') format('otf'),
-		url('./ttf/MaruBuri-SemiBold.ttf') format('ttf');
+	src: local('MaruBuri SemiBold'),
+		url('https://elijahstorm.github.io/korean-tarrot-card/fonts/maruburi/otf/MaruBuri-SemiBold.otf')
+			format('otf'),
+		url('https://elijahstorm.github.io/korean-tarrot-card/fonts/maruburi/ttf/MaruBuri-SemiBold.ttf')
+			format('ttf');
 }
 
 @font-face {
 	font-family: 'MaruBuri';
 	font-weight: 400;
 	font-display: swap;
-	src: local('MaruBuri Regular'), url('./otf/MaruBuri-Regular.otf') format('otf'),
-		url('./ttf/MaruBuri-Regular.ttf') format('ttf');
+	src: local('MaruBuri Regular'),
+		url('https://elijahstorm.github.io/korean-tarrot-card/fonts/maruburi/otf/MaruBuri-Regular.otf')
+			format('otf'),
+		url('https://elijahstorm.github.io/korean-tarrot-card/fonts/maruburi/ttf/MaruBuri-Regular.ttf')
+			format('ttf');
 }
 
 @font-face {
 	font-family: 'MaruBuri';
 	font-weight: 300;
 	font-display: swap;
-	src: local('MaruBuri Light'), url('./otf/MaruBuri-Light.otf') format('otf'),
-		url('./ttf/MaruBuri-Light.ttf') format('ttf');
+	src: local('MaruBuri Light'),
+		url('https://elijahstorm.github.io/korean-tarrot-card/fonts/maruburi/otf/MaruBuri-Light.otf')
+			format('otf'),
+		url('https://elijahstorm.github.io/korean-tarrot-card/fonts/maruburi/ttf/MaruBuri-Light.ttf')
+			format('ttf');
 }
 
 @font-face {
 	font-family: 'MaruBuri';
 	font-weight: 200;
 	font-display: swap;
-	src: local('MaruBuri ExtraLight'), url('./otf/MaruBuri-ExtraLight.otf') format('otf'),
-		url('./ttf/MaruBuri-ExtraLight.ttf') format('ttf');
+	src: local('MaruBuri ExtraLight'),
+		url('https://elijahstorm.github.io/korean-tarrot-card/fonts/maruburi/otf/MaruBuri-ExtraLight.otf')
+			format('otf'),
+		url('https://elijahstorm.github.io/korean-tarrot-card/fonts/maruburi/ttf/MaruBuri-ExtraLight.ttf')
+			format('ttf');
 }

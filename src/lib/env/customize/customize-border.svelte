@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { selectedBorder, selectedBorderColor } from './customize'
 	import { base } from '$app/paths'
-	import { fly } from 'svelte/transition'
 	import IrregularOctagon from './irregular-octagon.svelte'
+	import TallRectangle from './tall-rectangle.svelte'
 
 	const frameAmount = 5
 	const colors = ['bg-blue-500', 'bg-red-500', 'bg-green-500', 'bg-yellow-500']
@@ -32,13 +32,12 @@
 
 <div class="flex gap-4 custom-scrollbar p-1 pb-4">
 	{#each colors as color, index (color)}
-		<button
-			in:fly={{ y: 50, delay: (1 + index) * 100, duration: 200 }}
-			on:click={selectColor(color)}
-			class="btn w-36 h-14 rounded overflow-clip ring-2 ring-offset-2 ring-offset-black focus:ring-blue-400 {color}"
-			class:ring-gray-600={$selectedBorderColor !== color}
-			class:ring-white={$selectedBorderColor === color}
-			type="button"
+		<TallRectangle
+			{index}
+			{color}
+			horizontal
+			action={selectColor(color)}
+			selected={$selectedBorderColor === color}
 		/>
 	{/each}
 </div>

@@ -1,42 +1,50 @@
 <script lang="ts">
-	import { fly } from 'svelte/transition'
-	import { selectedAttribute } from './customize'
+	import { selectedAttribute, selectedGround } from './customize'
+	import { base } from '$app/paths'
+	import PerfectOctagon from './perfect-octagon.svelte'
+	import TallRectangle from './tall-rectangle.svelte'
 
 	const attributes = [
 		{
 			id: 0,
-			value: 'bg-blue-500',
+			value: 'bg-transparent',
 			name: 'Blue',
 		},
 		{
 			id: 1,
+			value: 'bg-blue-500',
+			name: 'Blue',
+		},
+		{
+			id: 2,
 			value: 'bg-red-500',
 			name: 'Red',
 		},
 		{
-			id: 2,
+			id: 3,
 			value: 'bg-green-500',
 			name: 'Green',
 		},
 		{
-			id: 3,
+			id: 4,
 			value: 'bg-yellow-500',
 			name: 'Yellow',
 		},
 	]
 
+	const totalBackgrounds = 4
+
 	const selectAttribute = (attribute: string) => () => selectedAttribute.set(attribute)
+	const selectGround = (bg: number) => () => selectedGround.set(bg)
 </script>
 
 <div class="flex gap-4 custom-scrollbar p-1 pb-4">
 	{#each attributes as attribute, index (attribute.id)}
-		<button
-			in:fly={{ y: 50, delay: (1 + index) * 100, duration: 200 }}
-			on:click={selectAttribute(attribute.value)}
-			class="btn w-14 h-36 rounded overflow-clip ring-2 ring-offset-2 ring-offset-black focus:ring-blue-400 {attribute.value}"
-			class:ring-gray-600={$selectedAttribute !== attribute.value}
-			class:ring-white={$selectedAttribute === attribute.value}
-			type="button"
+		<TallRectangle
+			{index}
+			color={attribute.value}
+			action={selectAttribute(attribute.value)}
+			selected={$selectedAttribute === attribute.value}
 		/>
 	{/each}
 </div>
@@ -44,23 +52,18 @@
 <div class="mx-8 h-0.5 bg-gradient-to-r from-transparent via-white to-transparent" />
 
 <div class="flex gap-4 custom-scrollbar pb-4">
-	{#each attributes as attribute, index (attribute.id)}
-		<div
-			in:fly={{ y: 50, delay: (3 + index) * 100, duration: 200 }}
-			class="octagon aspect-1 w-[6.6rem] transition"
-			class:bg-gray-600={$selectedAttribute !== attribute.value}
-			class:bg-white={$selectedAttribute === attribute.value}
+	{#each new Array(totalBackgrounds) as _, index (index)}
+		<PerfectOctagon
+			index={index + 2}
+			action={selectGround(index)}
+			selected={$selectedGround === index}
 		>
-			<div class="octagon aspect-1 w-[6.4rem] bg-black">
-				<button
-					on:click={selectAttribute(attribute.value)}
-					class="btn aspect-1 w-24 octagon px-4 py-2 hover:bg-gray-200 mt-[0.2rem] overflow-clip ring-1 ring-offset-1 ring-gray-400 ring-offset-gray-300 {attribute.value}"
-					type="button"
-				>
-					{attribute.name}
-				</button>
-			</div>
-		</div>
+			<img
+				class="object-cover"
+				src="{base}/customize/ground/{index}-3.png"
+				alt="background {index}"
+			/>
+		</PerfectOctagon>
 	{/each}
 </div>
 
