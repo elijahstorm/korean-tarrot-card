@@ -52,7 +52,7 @@
 				/>
 			</div>
 
-			<div class="flex flex-col px-6 py-4 border border-zinc-700 rounded-md mt-6 self-start">
+			<div class="flex flex-col px-6 py-4 border border-[#FFECAA] rounded-md mt-6 self-start">
 				<h5 class="font-maruburi">{Lang.results.cardInfoHeader}</h5>
 
 				<p>

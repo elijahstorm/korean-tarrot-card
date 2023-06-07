@@ -13,5 +13,3 @@ export const selectedBorderColor = writable('')
 export const selectedPerson = writable<Card>(allCards[0])
 
 export const selectedObject = writable<Item>(allItems[0])
-
-export const openFinishPrompt = writable(false)

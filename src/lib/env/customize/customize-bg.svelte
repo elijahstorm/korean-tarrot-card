@@ -8,27 +8,30 @@
 		{
 			id: 0,
 			value: 'bg-transparent',
-			name: 'Blue',
 		},
 		{
 			id: 1,
-			value: 'bg-blue-500',
-			name: 'Blue',
+			value: 'bg-gradient-to-b from-[#FFD4AC] to-[#DF89A8]',
 		},
 		{
 			id: 2,
-			value: 'bg-red-500',
-			name: 'Red',
+			value: 'bg-gradient-to-b from-[#D6E1BC] to-[#6A7EFF]',
 		},
 		{
 			id: 3,
-			value: 'bg-green-500',
-			name: 'Green',
+			value: 'bg-gradient-to-b from-[#FFDC98] to-[#848D4D]',
 		},
 		{
 			id: 4,
-			value: 'bg-yellow-500',
-			name: 'Yellow',
+			value: 'bg-gradient-to-b from-[#0D172D] to-[#B67B70]',
+		},
+		{
+			id: 5,
+			value: 'bg-gradient-to-b from-[#FFBCB3] to-[#FFF6BE]',
+		},
+		{
+			id: 6,
+			value: 'bg-gradient-to-b from-[#ECB5BB] to-[#514169]',
 		},
 	]
 

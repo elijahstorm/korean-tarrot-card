@@ -15,7 +15,9 @@
 
 {#if $roadmapData !== null}
 	<section class="grid grid-cols-1 grid-rows-1 text-white select-none">
-		<div class="col-start-1 row-start-1 bg-black blur-xl opacity-60 pointer-events-none" />
+		<div
+			class="col-start-1 row-start-1 bg-black blur-xl opacity-40 pointer-events-none mix-blend-multiply"
+		/>
 
 		<div class="flex row-start-1 col-start-1 gap-2">
 			<h4 class="pt-0.5 font-maruburi">{$roadmapData.title}</h4>
@@ -34,12 +36,12 @@
 				{#each $selectedCardsState as card, index (card.id)}
 					<div class="grid group">
 						<div
-							class="col-start-1 row-start-1 blur-[2px] bg-gradient-to-r from-stone-900 via-stone-500 to-stone-900 opacity-0 transition-opacity"
+							class="col-start-1 row-start-1 blur-[6px] bg-gradient-to-r from-transparent via-[#FFF7DCB0] to-transparent opacity-0 transition-opacity"
 							class:opacity-100={card.id === $currentDisplayedScene}
 						/>
 
 						<div
-							class="col-start-1 row-start-1 blur-[2px] bg-gradient-to-r from-stone-900 via-stone-500 to-stone-500 transition-opacity opacity-0 group-hover:opacity-90"
+							class="col-start-1 row-start-1 blur-[6px] bg-gradient-to-r from-transparent via-[#FFF7DC70] to-[#FFF7DCB0] transition-opacity opacity-0 group-hover:opacity-90"
 						/>
 
 						<button

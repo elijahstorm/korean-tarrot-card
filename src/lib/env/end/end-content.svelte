@@ -3,7 +3,7 @@
 	import { Lang } from '$lib/sources/lang'
 	import { selectedAttribute, selectedBorder, selectedPerson } from '../customize/customize'
 
-	let showCreatedCard = true
+	let showCreatedCard = false
 </script>
 
 {#if showCreatedCard}
@@ -39,5 +39,5 @@
 		/>
 	</div>
 {:else}
-	<h1 class="text-center mb-4">{Lang.endTitle}</h1>
+	<h1 class="text-center mb-4">{Lang.end.title}</h1>
 {/if}

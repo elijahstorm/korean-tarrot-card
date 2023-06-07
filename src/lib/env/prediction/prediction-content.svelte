@@ -42,7 +42,7 @@
 			<div in:fly class="flex gap-8 pr-8">
 				<button
 					on:click={repeat}
-					class="rounded-full border border-zinc-500 hover:bg-zinc-700 overflow-clip h-12 w-12"
+					class="rounded-full border border-[#FFECAA] hover:bg-[#FFECAA40] overflow-clip h-12 w-12"
 					type="button"
 				>
 					<img
@@ -55,7 +55,7 @@
 				{#if [...new Set($seenCardsState)].length >= 3}
 					<button
 						on:click={viewResultsState}
-						class="px-6 py-2 border border-zinc-500 rounded-md hover:bg-zinc-700"
+						class="px-6 py-2 border border-[#FFECAA] rounded-md hover:bg-[#FFECAA40]"
 						type="button"
 					>
 						{Lang.scene.gotoResults}
@@ -63,7 +63,7 @@
 				{:else}
 					<button
 						on:click={nextCardScene}
-						class="px-6 py-2 border border-zinc-500 rounded-md hover:bg-zinc-700"
+						class="px-6 py-2 border border-[#FFECAA] rounded-md hover:bg-[#FFECAA40]"
 						type="button"
 					>
 						{Lang.scene.nextScreenButton}

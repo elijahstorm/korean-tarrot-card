@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { base } from '$app/paths'
 	import { Lang } from '$lib/sources/lang'
-	import { viewEndState } from '$lib/utils/changeState'
 	import Prompt from './Prompt.svelte'
 	import { selectedAttribute, selectedBorder, selectedPerson } from './customize'
 	import CustomizeBg from './customize-bg.svelte'
@@ -29,6 +28,10 @@
 	]
 
 	let selectedCategory = 0
+
+	let showConfirmPrompt = false
+
+	const openPrompt = () => (showConfirmPrompt = true)
 </script>
 
 <div class="flex flex-col gap-8 h-full">
@@ -119,7 +122,7 @@
 
 	<div class="self-end space-x-4">
 		<button
-			on:click={viewEndState}
+			on:click={openPrompt}
 			class="btn border bg-stone-700 text-white border-stone-400 hover:bg-stone-400"
 			type="button"
 		>
@@ -128,4 +131,4 @@
 	</div>
 </div>
 
-<Prompt />
+<Prompt show={showConfirmPrompt} />
