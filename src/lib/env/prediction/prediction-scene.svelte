@@ -88,7 +88,7 @@
 			/>
 
 			<img
-				class="absolute -bottom-[9.2%] -right-[20%] mix-blend-screen opacity-70"
+				class="absolute -bottom-[8%] -right-[20%] mix-blend-screen opacity-70"
 				src="{base}/scenes/card glow.png"
 				alt="shine decor"
 				in:fly={{ x: -innerWidth / 7.5, delay: 400, duration: 1800, easing: quadOut }}

@@ -105,7 +105,7 @@
 									y: -200,
 								}}
 								type="button"
-								class="card responsive border border-black transition-all"
+								class="card responsive transition-all"
 								class:hidden={card.selected}
 								style={cardRotation(card)}
 							>
@@ -126,7 +126,7 @@
 			{:else}
 				{#each slots as card, index (card.id)}
 					<div
-						class="card responsive col-start-1 row-start-1 grid border border-black transition-all"
+						class="card responsive col-start-1 row-start-1 grid transition-all"
 						out:fly={{
 							...getDuration({
 								duration: duration / 2,
