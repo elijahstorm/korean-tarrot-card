@@ -23,4 +23,63 @@ export const Lang = {
 		cardInfoHL: '안 좋은 인연을',
 		cardInfoNormal: '해결할 수 있는 개체',
 	},
+	customize: {
+		nextStepButton: '다음 단계',
+		finishButton: '완성하기',
+		confirmPrompt: '행운카드를 완성하시겠습니까?',
+		yesResponse: '예',
+		noResponse: '아니오',
+	},
+	end: {
+		title: '동양의 타로타드',
+		teamInfo: [
+			{
+				title: '소속',
+				info: '동덕여자대학교',
+			},
+			{
+				title: '소속학과',
+				info: '미디어디자인학과',
+			},
+			{
+				title: '지도교수',
+				info: '정혜승',
+			},
+		],
+		personInfo: [
+			{
+				name: '김수연',
+				contact: 'Kim Suyeon / outstanding3028@gmail.com',
+			},
+			{
+				name: '박목인',
+				contact: 'Park Mogin / ahrdls12@naver.com',
+			},
+			{
+				name: '김은별',
+				contact: 'Kim Eunbyeol / sstar6533@gmail.com',
+			},
+			{
+				name: '남궁명지',
+				contact: 'Namgung Myeongji / nkmyeongji@daum.net',
+			},
+			{
+				name: '정혜윤',
+				contact: 'Jeong Hyeyoon / hyenduck0227@gmail.com',
+			},
+			{
+				name: '이라이자 스톰',
+				contact: 'Elijah Storm / elijahstormai@gmail.com',
+			},
+		],
+		music: {
+			title: '음악',
+			sounds: [
+				{
+					title: '',
+					info: '',
+				},
+			],
+		},
+	},
 }
