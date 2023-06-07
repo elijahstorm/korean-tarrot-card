@@ -18,3 +18,14 @@ export const post = async <T>(endpoint: string, data: object): Promise<Response<
 		},
 	}).then((r) => r.json())
 }
+
+export const memoize = <A extends object, B>(func: (obj: A) => B): ((obj: A) => B) => {
+	const memo = new WeakMap()
+
+	return (obj: A): B => {
+		if (!memo.has(obj)) {
+			memo.set(obj, func(obj))
+		}
+		return memo.get(obj)
+	}
+}

@@ -1,41 +1,61 @@
 <script lang="ts">
-	import { fly } from 'svelte/transition'
-	import { selectedAttribute, selectedObject } from './customize'
-	import { allItems } from '$lib/sources/itemData'
+	import { selectedObject } from './customize'
 	import { base } from '$app/paths'
+	import PerfectOctagon from './perfect-octagon.svelte'
+	import { allCards } from '$lib/sources/cardData'
+	import { memoize } from '$lib/utils/utils'
+	import { allItems } from '$lib/sources/itemData'
+	import { fly } from 'svelte/transition'
 
 	const select = (item: Item) => () => selectedObject.set(item)
+
+	const itemsFromIds = memoize((card: Card): Item[] =>
+		allItems.filter((item) => card.items.includes(item.id))
+	)
+
+	const cardFromItem = memoize(
+		(item: Item): Card => allCards.find((card) => card.items.includes(item.id)) ?? allCards[0]
+	)
 </script>
 
-<div class="grid grid-cols-3 gap-4 custom-scrollbar pb-4 max-h-96">
-	{#each allItems as item, index (item.id)}
-		<div
-			in:fly={{ y: 50, delay: (3 + index) * 100, duration: 200 }}
-			class="octagon aspect-1 w-[6.6rem] transition"
-		>
-			<div class="octagon aspect-1 w-[6.4rem] bg-black">
-				<button
-					on:click={select(item)}
-					class="btn aspect-1 w-24 octagon px-4 py-2 hover:bg-gray-200 mt-[0.2rem] overflow-clip ring-1 ring-offset-1 ring-gray-400 ring-offset-gray-300"
-					type="button"
-				>
-					<img
-						class="object-contain"
-						src="{base}/items/{item.fileName}.png"
-						alt={item.name}
-					/>
-				</button>
-			</div>
-		</div>
+<div
+	class="grid grid-cols-4 gap-4 justify-items-center items-center custom-scrollbar px-8 pb-4 max-h-96"
+>
+	{#each allCards as card, cardIndex (card.id)}
+		<p class="opacity-70" in:fly={{ y: 50, delay: cardIndex * 4 * 100, duration: 200 }}>
+			{card.title}
+		</p>
+
+		{#each itemsFromIds(card) as item, index (item.id)}
+			<PerfectOctagon
+				index={cardIndex * 4 + index + 1}
+				action={select(item)}
+				selected={$selectedObject === item}
+			>
+				<img
+					class="object-contain mix-blend-screen"
+					src="{base}/items/{item.fileName}.png"
+					alt={item.name}
+				/>
+			</PerfectOctagon>
+		{/each}
 	{/each}
 </div>
 
-<style>
-	.octagon {
-		clip-path: polygon(30% 0, 70% 0, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0 70%, 0 30%);
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		border: none;
-	}
-</style>
+<div in:fly>
+	<p class="text-xl">
+		<span class="font-thin opacity-70">
+			{cardFromItem($selectedObject).title}
+		</span>
+
+		<span class="">
+			{$selectedObject.name}
+		</span>
+	</p>
+
+	<hr class="my-4 opacity-20" />
+
+	<p class="opacity-70">
+		{$selectedObject.info}
+	</p>
+</div>

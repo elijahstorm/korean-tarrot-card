@@ -6,17 +6,7 @@
 	import { allPredictions } from '$lib/sources/predictionData'
 	import { allItems } from '$lib/sources/itemData'
 	import { base } from '$app/paths'
-
-	const memoize = <A extends object, B>(func: (obj: A) => B): ((obj: A) => B) => {
-		const memo = new WeakMap()
-
-		return (obj: A): B => {
-			if (!memo.has(obj)) {
-				memo.set(obj, func(obj))
-			}
-			return memo.get(obj)
-		}
-	}
+	import { memoize } from '$lib/utils/utils'
 
 	const item = memoize(
 		(card: Card): Item => allItems.find((item) => item.id === card.items[0]) ?? allItems[0]

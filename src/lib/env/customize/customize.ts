@@ -4,7 +4,9 @@ import { writable } from 'svelte/store'
 
 export const selectedAttribute = writable('')
 
-export const selectedBorder = writable('')
+export const selectedBorder = writable(0)
+
+export const selectedBorderColor = writable('')
 
 export const selectedPerson = writable<Card>(allCards[0])
 
