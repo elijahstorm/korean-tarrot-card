@@ -42,3 +42,5 @@ export const description = writable('')
 export const indicators = writable<Indicator>([])
 
 export const roadmapData = writable<Roadmap | null>(null)
+
+export const videoInMotion = writable(false)

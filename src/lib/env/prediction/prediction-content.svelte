@@ -7,6 +7,7 @@
 		seenCardsState,
 		selectedCardsState,
 		showCardDisplay,
+		videoInMotion,
 	} from '$lib/stores/state'
 	import { Lang } from '$lib/sources/lang'
 	import { fly } from 'svelte/transition'
@@ -38,7 +39,7 @@
 	<button on:click={toggleCardDisplay(false)} class="absolute inset-0" />
 {:else}
 	<div class="flex h-full justify-end items-end relative bottom-0">
-		{#if [...new Set($roadmapData?.seenItems)].length >= 3}
+		{#if !$videoInMotion && [...new Set($roadmapData?.seenItems)].length >= 3}
 			<div in:fly class="flex gap-8 pr-8">
 				<button
 					on:click={repeat}

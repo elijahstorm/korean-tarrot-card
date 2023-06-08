@@ -1,12 +1,14 @@
 <script lang="ts">
-	import { indicators, roadmapData, showCardDisplay } from '$lib/stores/state'
+	import { indicators, roadmapData, showCardDisplay, videoInMotion } from '$lib/stores/state'
 	import Indicator from './indicator.svelte'
+
+	let indicator: { id: number; left: number; top: number } | undefined
+
+	$: indicator = $indicators
+		.filter((indicator) => !$roadmapData?.seenItems.includes(indicator.id))
+		.shift()
 </script>
 
-{#if !$showCardDisplay}
-	{#each $indicators as indicator}
-		{#if !$roadmapData?.seenItems.includes(indicator.id)}
-			<Indicator id={indicator.id} left={indicator.left} top={indicator.top} />
-		{/if}
-	{/each}
+{#if indicator && !$showCardDisplay && !$videoInMotion}
+	<Indicator {...indicator} />
 {/if}

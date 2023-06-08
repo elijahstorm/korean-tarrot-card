@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { browser } from '$app/environment'
 	import { base } from '$app/paths'
+	import { videoInMotion } from '$lib/stores/state'
 
 	export let src: string
 	export let cover = false
@@ -8,10 +9,15 @@
 	let time = 0
 	let duration: number | undefined
 	let paused = false
+	let ended = false
 	let video: HTMLVideoElement
 
 	$: {
 		if (browser && duration) video.play()
+	}
+
+	$: {
+		if (ended) videoInMotion.set(false)
 	}
 </script>
 
@@ -26,5 +32,6 @@
 		bind:duration
 		bind:paused
 		bind:this={video}
+		bind:ended
 	/>
 </div>
