@@ -2,7 +2,7 @@
 	import { base } from '$app/paths'
 	import { Lang } from '$lib/sources/lang'
 	import Prompt from './Prompt.svelte'
-	import { selectedAttribute, selectedBorder, selectedPerson } from './customize'
+	import { selectedAttribute, selectedBorder, selectedPerson, showEndPrompt } from './customize'
 	import CustomizeBg from './customize-bg.svelte'
 	import CustomizeBorder from './customize-border.svelte'
 	import CustomizeObject from './customize-object.svelte'
@@ -29,9 +29,7 @@
 
 	let selectedCategory = 0
 
-	let showConfirmPrompt = false
-
-	const openPrompt = () => (showConfirmPrompt = true)
+	const openPrompt = () => showEndPrompt.set(true)
 </script>
 
 <div class="flex flex-col gap-8 h-full">
@@ -123,7 +121,7 @@
 	<div class="self-end space-x-4">
 		<button
 			on:click={openPrompt}
-			class="btn border bg-stone-700 text-white border-stone-400 hover:bg-stone-400"
+			class="px-6 py-2 border border-[#FFECAA] rounded-md hover:bg-[#FFECAA40]"
 			type="button"
 		>
 			{Lang.customize.finishButton}
@@ -131,4 +129,4 @@
 	</div>
 </div>
 
-<Prompt show={showConfirmPrompt} />
+<Prompt />

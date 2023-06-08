@@ -1,31 +1,33 @@
 <script lang="ts">
 	import { Lang } from '$lib/sources/lang'
 	import { viewEndState } from '$lib/utils/changeState'
+	import { showEndPrompt } from './customize'
 
-	export let show = false
+	const exit = () => {
+		showEndPrompt.set(false)
+		viewEndState()
+	}
 </script>
 
-{#if show}
-	<div class="fixed inset-0 bg-[#ffff0020] flex justify-center items-center">
-		<div
-			class="border rounded border-[#ffff0080] bg-[#ffff0020] flex flex-col gap-6 py-4 px-12"
-		>
-			<p>
+{#if $showEndPrompt}
+	<div class="fixed inset-0 flex bg-[#FFECAA20] justify-center items-center">
+		<div class="border rounded border-[#FFECAA80] bg-yellow-900 flex flex-col gap-6 py-4 px-12">
+			<p class="text-lg font-semibold">
 				{Lang.customize.confirmPrompt}
 			</p>
 
 			<div class="flex gap-12">
 				<button
-					on:click={() => (show = false)}
-					class="btn px-6 py-2 border-[#ffff0080] bg-[#ffff0040]"
+					on:click={() => ($showEndPrompt = false)}
+					class="px-6 py-2 border border-[#FFECAA] rounded-md hover:bg-[#FFECAA40]"
 					type="button"
 				>
 					{Lang.customize.noResponse}
 				</button>
 
 				<button
-					on:click={viewEndState}
-					class="btn px-6 py-2 border-[#ffff0080] bg-[#ffff0040]"
+					on:click={exit}
+					class="px-6 py-2 border border-[#FFECAA] rounded-md hover:bg-[#FFECAA40]"
 					type="button"
 				>
 					{Lang.customize.yesResponse}

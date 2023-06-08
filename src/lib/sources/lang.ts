@@ -67,7 +67,7 @@ export const Lang = {
 				contact: 'Jeong Hyeyoon / hyenduck0227@gmail.com',
 			},
 			{
-				name: '이라이자 스톰',
+				name: '일라이자 스톰',
 				contact: 'Elijah Storm / elijahstormai@gmail.com',
 			},
 		],

@@ -107,7 +107,7 @@
 	<div class="self-end space-x-4">
 		<button
 			on:click={viewCustomizeState}
-			class="btn border bg-stone-700 text-white border-stone-400 hover:bg-stone-400"
+			class="px-6 py-2 border border-[#FFECAA] rounded-md hover:bg-[#FFECAA40]"
 			type="button"
 		>
 			{Lang.results.makeCardButton}
@@ -115,7 +115,7 @@
 
 		<button
 			on:click={viewCardsState}
-			class="btn border bg-stone-700 text-white border-stone-400 hover:bg-stone-400"
+			class="px-6 py-2 border border-[#FFECAA] rounded-md hover:bg-[#FFECAA40]"
 			type="button"
 		>
 			{Lang.results.nextButton}
