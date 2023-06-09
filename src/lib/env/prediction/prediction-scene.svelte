@@ -35,6 +35,26 @@
 
 <svelte:window bind:innerWidth />
 
+<svelte:head>
+	{#each new Array(4) as _, index}
+		<link
+			rel="preload"
+			as="video"
+			type="video/mp4"
+			href="scenes/{card.fileName}/{getItem(card, index)}.mp4"
+		/>
+	{/each}
+</svelte:head>
+
+{#each new Array(4) as _, index}
+	<video
+		muted
+		preload="auto"
+		src="{base}/scenes/{card.fileName}/{getItem(card, index)}.mp4"
+		class="invisible"
+	/>
+{/each}
+
 <img
 	class="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2"
 	src="{base}/scenes/bgs/{card.fileName}.png"

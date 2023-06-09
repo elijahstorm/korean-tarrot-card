@@ -25,9 +25,10 @@
 	<video
 		autoplay
 		muted
-		src={base + '/' + src}
+		src="{base}/{src}"
 		class="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2"
 		class:object-cover={cover}
+		preload="auto"
 		bind:currentTime={time}
 		bind:duration
 		bind:paused

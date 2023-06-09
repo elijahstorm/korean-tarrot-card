@@ -10,7 +10,7 @@
 
 	const choose = (id: number) => () =>
 		pipe(
-			setTimeout(() => audio.play(), 0),
+			setTimeout(() => audio?.play(), 0),
 			() => predictionState.set(id),
 			() => viewCardsState()
 		)
@@ -28,7 +28,6 @@
 			type="button"
 			on:mouseenter={hover(prediction)}
 		>
-			<!-- <div class="octagon"> -->
 			<div class="grid text-center mb-4 text-2xl font-maruburi sm:text-3xl lg:text-5xl">
 				<h2
 					class="col-start-1 row-start-1 blur-md transition-all opacity-0 group-hover:opacity-80 group-focus:opacity-80"
@@ -40,19 +39,8 @@
 					{prediction.title}
 				</h2>
 			</div>
-			<!-- </div> -->
 
 			<div class="h-1/2" />
 		</button>
 	{/each}
 </div>
-
-<!-- <style>
-	.octagon {
-		clip-path: polygon(20% 0, 80% 0, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0 80%, 0 20%);
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		border: none;
-	}
-</style> -->

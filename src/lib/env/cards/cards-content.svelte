@@ -83,8 +83,9 @@
 
 <svelte:head>
 	{#each $selectedCardsState as card}
-		<link rel="preload" as="image" href={`cards/${card.fileName}.png`} />
-		<link rel="preload" as="image" href={`cards/small/${card.fileName}.png`} />
+		<link rel="preload" as="image" href="cards/{card.fileName}.png" />
+		<link rel="preload" as="image" href="cards/small/{card.fileName}.png" />
+		<link rel="preload" as="image" href="scenes/bgs/{card.fileName}.png" />
 	{/each}
 </svelte:head>
 
