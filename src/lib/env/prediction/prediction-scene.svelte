@@ -51,7 +51,7 @@
 		muted
 		preload="auto"
 		src="{base}/scenes/{card.fileName}/{getItem(card, index)}.mp4"
-		class="invisible"
+		class="absolute invisible"
 	/>
 {/each}
 
