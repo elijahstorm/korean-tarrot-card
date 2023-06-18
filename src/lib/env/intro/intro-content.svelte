@@ -28,19 +28,21 @@
 				</h1>
 			</div>
 
-			<div in:fly={{ y: 100, duration, delay: delay(2) }}>
+			<div class="text-sm space-y-3" in:fly={{ y: 100, duration, delay: delay(2) }}>
 				<p class="text-center opacity-60">
 					{Lang.subtitle}
 				</p>
 
-				<p class="text-center opacity-60">{Lang.subtitle2}</p>
+				<p class="text-center opacity-60">
+					{Lang.subtitle2}
+				</p>
 			</div>
 		</div>
 
 		<button
 			on:click={viewSelectionState}
 			in:scale={{ duration, delay: delay(3), opacity: 0 }}
-			class="btn mb-12 mx-auto text-xl bg-zinc-900 border rounded-full px-8 py-2 text-white border-white opacity-70 transition-all hover:px-12 hover:bg-zinc-800 hover:opacity-100"
+			class="btn mb-12 mx-auto text-xl bg-transparent border rounded-full px-8 py-2 text-white border-white opacity-70 transition-all duration-700 hover:px-12 hover:bg-[#fff3] hover:opacity-100"
 			type="button"
 		>
 			{Lang.startButton}
