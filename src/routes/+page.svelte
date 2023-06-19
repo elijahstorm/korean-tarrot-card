@@ -45,16 +45,16 @@
 	{/each}
 </div>
 
-<section class="py-8 px-4 sm:px-8 grid grid-rows-layout absolute inset-0 overflow-hidden">
-	<header class="justify-self-start">
+<section class="pt-8 grid grid-rows-layout absolute inset-0 overflow-hidden">
+	<header class="justify-self-start px-4 sm:px-8">
 		<Nav />
 	</header>
 
-	<section class="justify-self-end">
+	<section class="justify-self-end px-4 sm:px-8">
 		<Roadmap />
 	</section>
 
-	<main class="relative col-span-2 justify-self-center self-center w-full h-full text-white">
+	<main class="relative px-4 sm:px-8 col-span-2 justify-self-center self-center w-full h-full text-white">
 		{#each viewComponents as { state, component }}
 			{#if $viewState === state}
 				{#key state}
@@ -64,7 +64,7 @@
 		{/each}
 	</main>
 
-	<footer class="col-span-2 justify-self-center self-end">
+	<footer class="col-span-2 w-full self-end">
 		<Description />
 	</footer>
 </section>

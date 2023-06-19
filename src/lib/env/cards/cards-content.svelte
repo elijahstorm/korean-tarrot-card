@@ -60,8 +60,8 @@
 		if (slots.length >= 3) {
 			setTimeout(() => (revealCards = true), duration * 2)
 			setTimeout(() => (zoom = true), duration * 3)
-			setTimeout(() => (cards = slots = []), duration * 5)
-			setTimeout(() => pipe(showCardDisplay.set(true), () => viewSceneState()), duration * 6)
+			setTimeout(() => (cards = slots = []), duration * 7)
+			setTimeout(() => pipe(showCardDisplay.set(true), () => viewSceneState()), duration * 8)
 			return
 		}
 	}
@@ -74,7 +74,7 @@
 	const angle = (id: number) => ((Math.PI / 1.5) * id - cardAmount) * angleChange
 
 	const cardRotation = (card: Card) =>
-		`transform-origin: center ${innerWidth / 3}px; rotate: ${angle(card.id)}deg; z-index: ${
+		`transform-origin: center ${innerWidth / 2.5}px; rotate: ${angle(card.id)}deg; z-index: ${
 			card.id
 		}`
 </script>
@@ -89,7 +89,13 @@
 	{/each}
 </svelte:head>
 
-<div class="flex flex-col">
+<h3 class="text-center opacity-0 my-8 duration-700 transition-opacity"
+	class:opacity-80={slots.length < 3 && !zoom}
+	in:fly>
+	{Lang.cards.header}
+</h3>
+
+<div class="flex flex-col select-none">
 	<div class="flex-1 flex flex-col py-8">
 		<div class="responsive col-span-3 grid justify-center">
 			{#if cards.length === 0}
@@ -120,7 +126,7 @@
 
 		<div
 			class="responsive self-center col-span-3 grid grid-cols-1 mt-14 pt-16 transition-all duration-700"
-			style={zoom ? 'scale: 2.5' : ''}
+			style={zoom ? 'scale: 2.5; margin-top: -20rem;' : ''}
 		>
 			{#if slots.length === 0}
 				<div class="card responsive invisible" />
@@ -136,9 +142,9 @@
 							y: 40,
 						}}
 						style="transition-duration: {duration}ms; {card.animating
-							? 'translate: 0 calc(max(-20vh, -120px) - 7.5rem); ' +
+							? 'translate: 0 calc(max(-20rem, -200px) - 7.5rem); ' +
 							  cardRotation(card)
-							: `translate: calc(${index} * (min(20vh, 120px) * (0.617 + 0.25)) - min(20vh, 120px)) 0`}"
+							: `translate: calc(${index} * (min(20rem, 200px) * (0.617 + 0.25)) - min(20rem, 200px)) 5rem`}"
 					>
 						<img
 							class="col-start-1 row-start-1 transition-all"
@@ -170,21 +176,22 @@
 			{/if}
 		</div>
 
-		{#if !zoom}
+		{#if true}
 			<div
-				class="grid self-center -mt-24 pt-2"
+				class="grid self-center -mt-24 pt-2 transition-all duration-700"
 				out:fade={{ ...getDuration({ duration: duration / 2 }) }}
+				style={zoom ? 'scale: 2.5' : ''}
 			>
 				{#each Lang.timelineNames as name, index (name)}
 					<div
 						class="flex flex-col col-start-1 row-start-1 space-y-2 items-center"
-						style="translate: calc({index} * (min(20vh, 120px) * (0.617 + 0.25)) - min(20vh, 120px)) 0"
+						style="translate: calc({index} * (min(20rem, 200px) * (0.617 + 0.25)) - min(20rem, 200px)) 0"
 					>
 						<p class="font-maruburi">
 							{name}
 						</p>
 
-						{#if !slots[index]}
+						{#if !slots[index] && !zoom}
 							<div
 								class="card responsive border-2 border-dashed border-zinc-600"
 								out:fade={{ ...getDuration({ duration: duration / 3 }) }}
@@ -199,7 +206,7 @@
 
 <style>
 	.responsive {
-		height: 20vh;
-		max-height: 120px;
+		height: 20rem;
+		max-height: 200px;
 	}
 </style>

@@ -6,15 +6,15 @@
 </script>
 
 {#if $showNav}
-	<nav in:fly out:fly class="flex gap-6 text-white">
+	<nav in:fly out:fly class="flex gap-8 text-white">
 		<button on:click={navBackState} type="button">
-			<img src="{base}/nav/back-button.svg" alt="Back button" />
+			<img class="w-8" src="{base}/nav/back-button.svg" alt="Back button" />
 		</button>
 		<button on:click={viewIntroState} type="button">
-			<img src="{base}/nav/home-button.svg" alt="Home button" />
+			<img class="w-8" src="{base}/nav/home-button.svg" alt="Home button" />
 		</button>
 		<button on:click={viewPopupModal} type="button">
-			<img src="{base}/nav/info-button.svg" alt="Info button" />
+			<img class="w-8" src="{base}/nav/info-button.svg" alt="Info button" />
 		</button>
 	</nav>
 {/if}
