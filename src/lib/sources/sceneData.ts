@@ -25,7 +25,12 @@ export const allScenes: Scene[] = new Array(6).fill({}).map((_, id) => ({
 	],
 	points: new Array(3).fill({}).map((_, index) => ({
 		id: index + 1,
-		description: getRandomLoremIpsumSpan(),
+		description: [
+			getRandomLoremIpsumSpan(),
+			getRandomLoremIpsumSpan(),
+			getRandomLoremIpsumSpan(),
+			getRandomLoremIpsumSpan(),
+		],
 		left: pollRandomPosition(),
 		top: pollRandomPosition(),
 	})),

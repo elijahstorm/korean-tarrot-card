@@ -5,6 +5,6 @@
 
 {#if $description}
 	<p in:fly out:fly class="select-none text-white opacity-70">
-		{$description}
+		{@html $description}
 	</p>
 {/if}

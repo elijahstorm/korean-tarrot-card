@@ -23,7 +23,7 @@ type ActionPoint = {
 	id: number
 	left: number
 	top: number
-	description: string
+	description: [string, string, string, string]
 }
 
 type RenderObject = {

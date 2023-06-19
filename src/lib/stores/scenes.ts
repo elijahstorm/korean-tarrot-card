@@ -30,7 +30,7 @@ export const parseScene = (scene: Scene): { indicator: Indicator; roadmap: Roadm
 			(point) =>
 				({
 					id: point.id,
-					description: point.description,
+					description: point.description[get(predictionState)],
 				} as SceneEventPoint)
 		) as [SceneEventPoint, SceneEventPoint, SceneEventPoint],
 		currentTab: 0,
