@@ -83,11 +83,11 @@
 				class="absolute -bottom-1 -right-4 w-4 h-4 border-b border-r border-white opacity-40"
 			/>
 
-			<h2 class="absolute text-4xl font-maruburi blur opacity-60">
+			<h2 class="font-semibold absolute text-4xl font-maruburi blur opacity-60">
 				{card.title}
 			</h2>
 
-			<h2 class="text-4xl font-maruburi">
+			<h2 class="font-semibold text-4xl font-maruburi">
 				{card.title}
 			</h2>
 		</div>
@@ -96,7 +96,7 @@
 			{Lang.timelineNames[$roadmapData?.currentTab ?? 0]}
 		</h3>
 
-		<div class="card w-1/5 relative">
+		<div class="card w-1/5 max-w-[15rem] relative">
 			<img src="{base}/cards/{card.fileName}.png" alt={card.title} />
 
 			<img

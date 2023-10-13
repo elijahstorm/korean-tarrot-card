@@ -4,6 +4,9 @@ export const Lang = {
 	subtitle2: '행운카드를 만들어 더 좋은 운을 얻거나 나에게 부족한 운을 보완해보세요.',
 	startButton: '시작하기',
 	timelineNames: ['과거', '현재', '미래'],
+	cards: {
+		header: '당신의 과거, 현재, 미래를 생각하며 3장의 카드를 뽑아주세요.',
+	},
 	scene: {
 		startSceenInstructions: '카드를 클릭해 공간으로 운세를 확인하세요.',
 		nextScreenButton: '다음 카드 해석 보기',
